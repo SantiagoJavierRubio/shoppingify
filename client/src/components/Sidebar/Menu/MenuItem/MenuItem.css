@@ -1,0 +1,30 @@
+.menuItem {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    padding: 1rem 2rem 1rem 1rem;
+}
+
+.menuItem span {
+    font-size: 1.7rem;
+    margin: auto;
+    color: rgb(69,69,69)
+}
+
+.menuIndicator {
+    position: absolute;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(249, 161, 9);
+    left: -4px;
+    top: 45%;
+    transform: translateY(-50%);
+    height: 0%;
+    transition: height 0.25s ease-in;
+}
+
+.selectedMenu {
+    height: 80% !important;
+}
