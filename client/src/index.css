@@ -1,3 +1,53 @@
+* {
+    box-sizing: border-box;
+}
 body {
     background-color:rgba(0, 0, 0, .1);
+    overflow: hidden;
+}
+
+.tooltip .tiptext {
+    font-size: .9rem;
+    visibility: hidden;
+    width: fit-content;
+    padding: .3rem;
+    background-color: rgb(69,69,69);
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.tooltip .tiptext::after {
+    content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+}
+.tooltip:hover .tiptext {
+    visibility: visible;
+}
+
+.tooltip.left .tiptext{
+    top: -5px;
+    right: 110%;
+}
+.tooltip.left .tiptext::after{
+    margin-top: -5px;
+    top: 50%;
+    left: 100%;
+    border-color: transparent transparent transparent #454545;
+}
+
+.tooltip.right .tiptext{
+    top: 50%;
+    transform: translateY(-50%);
+    left: 80%;
+}
+.tooltip.right .tiptext::after{
+    margin-top: -5px;
+    top: 50%;
+    right: 100%;
+    border-color: transparent #454545 transparent transparent;
 }

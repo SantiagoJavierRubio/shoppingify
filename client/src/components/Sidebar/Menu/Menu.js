@@ -1,13 +1,17 @@
 import './Menu.css';
+import { MAIN_VIEWS } from '../../Main/Main';
+import MenuItem from './MenuItem/MenuItem';
 
 const Menu = () => {
 
     return(
+        <>
         <div id="left-menu">
-            <span className="material-icons">list</span>
-            <span className="material-icons">history</span>
-            <span className="material-icons">insert_chart_outlined</span>
+            <MenuItem value={MAIN_VIEWS.ITEMS} />
+            <MenuItem value={MAIN_VIEWS.HISTORY} />
+            <MenuItem value={MAIN_VIEWS.STATS} />
         </div>
+        </>
     )
 }
 
