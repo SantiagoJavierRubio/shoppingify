@@ -16,7 +16,7 @@ const MenuItem = ({ value }) => {
     return(
         <button onClick={handleNavigation} className="menuItem tooltip right">
             <div className={`menuIndicator ${value===view ? 'selectedMenu' : null}`}></div>
-            <span className={'tiptext'}>{value}</span>
+            <span className={'tiptext'}>{value===MAIN_VIEWS.STATS ? 'statistics' : value}</span>
             <span className="material-icons">
                 { value === MAIN_VIEWS.ITEMS && 'list' }
                 { value === MAIN_VIEWS.HISTORY && 'history' }
