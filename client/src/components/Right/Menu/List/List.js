@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import ListItem from './ListItem/ListItem';
 
 const List = () => {
 
@@ -6,12 +7,23 @@ const List = () => {
 
     return(
         <article>
-            <h5>Shopping list</h5>
+            <h5 className="shoppingTitle">Shopping list</h5>
             {/* Add categories with each item and qtity */}
-            <ul>
-            {items?.map(item => (
-                <li key={item.id}>{item.name}: {item.ammount}</li>
-            ))}
+            <ul id="category-list">
+                {items?.map(category => (
+                    <div key={category?.category} className="itemList">
+                        <li>
+                            <h6 className="categoryTitle">{category?.category}</h6>
+                        </li>
+                        <ul>
+                            {category?.items?.map(item => (
+                                <li key={item?.id}>
+                                    <ListItem item={item} />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </ul>
         </article>
     )
