@@ -1,0 +1,66 @@
+.listItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .5rem 0rem;
+    height: 2.8rem;
+    margin: .25rem 0rem;
+}
+
+.listItem .listItemInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.listItemInfo.itemEdit {
+    background-color: white;
+}
+
+.listItem .itemName {
+    margin: 0;
+    padding: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: black;
+    cursor: default;
+}
+
+.listItem .itemAmmount {
+    color: rgb(249, 161, 9);
+    border: 2px solid rgb(249, 161, 9);
+    border-radius: 24px;
+    background-color: transparent;
+    font-size: .75rem;
+    font-weight: 700;
+    width: 4.25rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer
+}
+.listItem .itemAmmount.itemEdit {
+    cursor: default;
+}
+
+.listItem .itemAction {
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 2.3rem;
+}
+
+.listItem .itemAction.itemQuantity {
+    color: rgb(249, 161, 9);
+    background: transparent;
+}
+
+.listItem .itemAction.itemDelete {
+    height: 2.8rem;
+}
