@@ -1,0 +1,45 @@
+#edit-item-actions {
+    background-color: white;
+    padding: 0rem 1.8rem 0rem 1rem;
+}
+#empty-cart-logo {
+    margin-top: -100%;
+    margin-left: 15%;
+}
+
+.bottomActions {
+    margin: 1rem;
+    margin-top: 2.18rem;
+    height: 50%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgb(249, 161, 9);
+    border-radius: 12px;
+}
+.bottomActions.disabledActions {
+    margin-top: 1rem;
+    border: 2px solid rgb(189, 189, 189);
+}
+.bottomActions input {
+    margin: .2rem;
+    outline: none;
+    border: none;
+    height: 90%;
+    flex-grow: 1;
+    font-size: .85rem;
+    font-weight: 500;
+}
+.bottomActions input:disabled {
+    color: rgb(189, 189, 189);
+}
+.bottomActions button {
+    margin: 0;
+    height: 100%;
+    width: 25%;
+    transform: scale(1.05);
+}
+.bottomActions button:disabled {
+    background-color: rgb(193, 193, 196);
+}

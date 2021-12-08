@@ -6,6 +6,11 @@ body {
     background-color:rgba(0, 0, 0, .1);
     overflow: hidden;
 }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
 
 /* SHARED ELEMENTS */
@@ -24,6 +29,14 @@ body {
 }
 .primaryButton:active {
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.accentButton {
+    border: none;
+    background-color: rgb(249, 161, 9);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 
