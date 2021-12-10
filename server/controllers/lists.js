@@ -21,7 +21,12 @@ const getListDetail = async (req, res, next) => {
     try{
         db.query('SELECT * FROM Shopping_Lists WHERE ID = ?', [requiredList], (err, result) => {
             if(err) throw err;
-            listData.name = result[0]?.name;
+            if(!result[0]){
+                const notFound = new Error('List not found');
+                notFound.status = 404;
+                return next(notFound)
+            }
+            listData.name = result[0].name;
         })
         db.query('SELECT product_id FROM Shopping_List_Products WHERE list_id = ?', [requiredList], (err, results) => {
             if(err) throw err;
@@ -56,7 +61,7 @@ const createList = (req, res, next) => {
             })
             db.execute(db.format('INSERT INTO Shopping_List_Products (list_id, product_id, ammount) VALUES ?', [listProducts]), (error, results) => {
                 if(error) throw error;
-                res.status(200).json({ message: 'List added successfully! '});
+                res.status(200).json({ message: 'List added successfully!' });
             })
         })
     } catch(err) {
@@ -65,7 +70,28 @@ const createList = (req, res, next) => {
 }
 
 const deleteList = (req, res, next) => {
-
+    const toDelete = req.body.id
+    try {
+        db.query('SELECT * FROM Shopping_Lists WHERE ID = ?', [toDelete], (err, results) => {
+            if(err) throw err
+            if(!results[0]){
+                const notFound = new Error('List not found');
+                notFound.status = 404;
+                return next(notFound)
+            }
+            if(results[0].user_id !== req.session.userID){
+                const notAuthorized = new Error("You're not authorized to delete this element");
+                notAuthorized.status = 401;
+                return next(notAuthorized);
+            }
+            db.execute('DELETE FROM Shopping_Lists WHERE ID = ?', [toDelete], (error, result) => {
+                if(error) throw error;
+                res.status(200).json({ message: 'List deleted' });
+            })
+        })
+    } catch(err) {
+        return next(err);
+    }
 }
 
 module.exports = { getLists, getListDetail, createList, deleteList }
