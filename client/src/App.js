@@ -1,16 +1,29 @@
-import './App.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { checkUser } from './redux/ducks/user';
 import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main';
 import Right from './components/Right/Right';
+import UserAuth from './components/UserAuth/UserAuth';
+import './App.css'
 
 function App() {
-  return (
+
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(checkUser())
+  }, []);
+  
+  if(user) return (
     <div className="App">
-      <Sidebar />
-      <Main />
-      <Right />
+        <Sidebar />
+        <Main />
+        <Right />
     </div>
   );
+  return <UserAuth />
 }
 
 export default App;

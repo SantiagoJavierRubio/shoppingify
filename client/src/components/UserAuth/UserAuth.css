@@ -1,0 +1,99 @@
+.auth-box {
+    margin: auto;
+    width: clamp(250px, 35%, 29rem);
+    border: 2px solid rgb(249, 161, 9);
+    background-color: white;
+    border-radius: 24px;
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.logo {
+    height: 1rem;
+    margin-left: -10px;
+}
+.you-new {
+    font-size: .85rem;
+    font-weight: 400;
+    text-align: center;
+    color: #828282;
+}
+.you-new button {
+    border: none;
+    background-color: transparent;
+    font-size: .85rem;
+    font-weight: 700;
+    color: rgb(249, 161, 9);;
+    cursor: pointer;
+}
+.you-new button:hover {
+    text-decoration: underline;
+}
+.you-new button:active {
+    color: purple;
+}
+
+/* sub-component shared classes */
+.inner-box {
+    text-align: left;
+}
+.auth-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.user-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.input-div {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;    
+    border: 1px solid #BDBDBD;
+    margin: .35rem 0;
+    padding: .3rem .5rem;
+    color: rgba(130, 130, 130, 1);
+    border-radius: 8px;
+}
+.input-div input {
+    border: none;
+    flex-grow: 1;
+    height: 100%;
+    outline: none;
+    margin-left: .5rem;
+    font-size: 1rem;
+    overflow-x: scroll;
+}
+.register-description {
+    font-size: 1rem;
+    font-weight: 400;
+}
+.submit-btn {
+    background: rgb(249, 161, 9);
+    border-radius: 8px;
+    border: none;
+    color: #FFF;
+    font-size: 1rem;
+    margin: .35rem 0;
+    padding: .5rem .2rem;
+    font-weight: 600;
+    text-align: center; 
+    cursor: pointer;
+}
+.submit-btn:hover {
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
+}
+.submit-btn:active {
+    box-shadow: none;
+}
+.error-msg {
+    font-size: .8rem;
+    font-weight: 300;
+    color: red;
+    margin: .2rem 0 0 1rem;
+}

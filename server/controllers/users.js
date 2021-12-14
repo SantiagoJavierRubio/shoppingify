@@ -37,10 +37,28 @@ const createUser = async (req, res, next) => {
     }
 }
 
+const checkUser = async (req, res, next) => {
+    try{
+        if(req.session.loggedIn) {
+            db.query('SELECT * FROM Users WHERE ID = ?', [req.session.userID], (err, result) => {
+                if(err) throw err;
+                let userData = {...result[0]}
+                delete userData.password;
+                res.status(200).json(userData)
+            })
+        }
+        res.json(null)
+    } catch(err) {
+        const error = new Error(`Authorization error: ${err.message}`);
+        error.status = 400
+        return next(error);
+    }
+}
+
 const authUser = async (req, res, next) => {
     const userInput = req.body;
     try{
-        db.query('SELECT * FROM `Users` WHERE `email` = ?', [userInput.email], (err, result) => {
+        db.query('SELECT * FROM Users WHERE email = ?', [userInput.email], (err, result) => {
             if(err) throw err;
             if(!result[0]) {
                 const error = new Error('User not found')
@@ -50,7 +68,7 @@ const authUser = async (req, res, next) => {
             bcrypt.compare(userInput.password, result[0].password, (err, isMatch) => {
                 if(err) throw err;
                 if(!isMatch) return res.status(401).json({ error: 'wrongPassword', message: 'Incorrect password!' })
-                const userData = {...result[0]}
+                let userData = {...result[0]}
                 delete userData.password;
                 req.session.loggedIn = true;
                 req.session.userID = userData.ID;
@@ -66,6 +84,7 @@ const authUser = async (req, res, next) => {
 
 const logOut = async (req, res, next) => {
     try {
+        req.session.loggedIn = false;
         req.session.destroy((err) => {
             if(err) throw err;
             res.status(200).json({ message: 'Logged out successfully' })
@@ -82,4 +101,4 @@ const isAuthorized = async(req, res, next) => {
     return next(err);
 }
 
-module.exports = { createUser, authUser, logOut, isAuthorized }
+module.exports = { createUser, authUser, logOut, isAuthorized, checkUser }
