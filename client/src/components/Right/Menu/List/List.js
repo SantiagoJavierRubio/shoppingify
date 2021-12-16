@@ -19,7 +19,7 @@ const List = () => {
                             </li>
                             <ul>
                                 {category?.items?.map(item => (
-                                    <li key={item?.id}>
+                                    <li key={item?.ID}>
                                         <ListItem item={item} />
                                     </li>
                                 ))}

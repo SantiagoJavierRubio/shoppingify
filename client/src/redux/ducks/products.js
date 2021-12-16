@@ -7,8 +7,9 @@ export const getProducts = () => ({
     type: GET_PRODUCTS
 })
 
-export const setProducts = () => ({
-    type: SET_PRODUCTS
+export const setProducts = (products) => ({
+    type: SET_PRODUCTS,
+    products
 })
 
 export const createProduct = (product) => ({
@@ -26,8 +27,7 @@ const initialState = []
 export default function(state=initialState, action) {
     switch(action.type){
         case SET_PRODUCTS:
-            const { products } = action;
-            return [ ...state, products ]
+            return [ ...state, ...action.products ]
         default:
             return state
     }

@@ -1,0 +1,22 @@
+#main-category-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: .5rem;
+    gap: 1rem;
+}
+#main-category-list .category{
+    width: 100%;
+}
+#main-category-list .categoryItemList {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    columns: 4 auto;
+    flex-wrap: wrap;
+}
+#main-category-list h5{
+    font-size: 1.15rem;
+    font-weight: 500;
+}

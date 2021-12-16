@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Stats from './Stats/Stats';
 import Items from './Items/Items';
 import History from './History/History';
+import './Main.css';
 
 export const MAIN_VIEWS = {
     ITEMS: 'items',
@@ -15,15 +16,10 @@ const Main = () => {
     
     const dispatch = useDispatch();
     const view = useSelector((state) => state.views.view);
-    const products = useSelector((state) => state.products)
 
     useEffect(()=> {
         dispatch(getProducts());
     }, [])
-
-    useEffect(()=> {
-        console.log(products)
-    }, [products])
 
 
     return(
