@@ -2,7 +2,6 @@ import axios from 'axios';
 
 
 const Register = () => {
-
     
     const createUser = async (e) => {
         e.preventDefault();
@@ -11,9 +10,7 @@ const Register = () => {
         if(email === '') return errorHandler({field: 'user', code: 'missing'});
         if(password === '') return errorHandler({field: 'password', code: 'missing'});
         try {
-            await axios.post(`${process.env.REACT_APP_API_URI}/auth/register`, {
-                //user: userCredential.user
-            })
+            await axios.post(`http://localhost:5000/users/create`, { email, password })
         } catch (error) {
             errorHandler(error);
         }

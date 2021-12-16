@@ -1,5 +1,7 @@
 const db = require('../db.js');
 const bcrypt = require('bcryptjs');
+const { createValidationCode } = require('./userValidation.js')
+
 
 const createUser = async (req, res, next) => {
     const userInput = req.body;
@@ -18,7 +20,8 @@ const createUser = async (req, res, next) => {
                 ID: null,
                 email: userInput.email,
                 join_date: date,
-                password: hashedPassword
+                password: hashedPassword,
+                validated: false
             }
             db.execute(db.format('INSERT INTO Users SET ?', userData), (err, result) => {
                 if(err){
@@ -28,6 +31,7 @@ const createUser = async (req, res, next) => {
                         return next(error);
                     }
                 };
+                createValidationCode(result.insertId, userData.email);
                 res.status(201).json(result.insertId);
             })
     
@@ -44,10 +48,11 @@ const checkUser = async (req, res, next) => {
                 if(err) throw err;
                 let userData = {...result[0]}
                 delete userData.password;
-                res.status(200).json(userData)
+                return res.status(200).json(userData)
             })
+        } else {
+            return res.json(null)
         }
-        res.json(null)
     } catch(err) {
         const error = new Error(`Authorization error: ${err.message}`);
         error.status = 400
@@ -62,6 +67,11 @@ const authUser = async (req, res, next) => {
             if(err) throw err;
             if(!result[0]) {
                 const error = new Error('User not found')
+                error.status = 404;
+                return next(error);
+            }
+            if(!result[0].validated) {
+                const error = new Error('Mail not validated')
                 error.status = 404;
                 return next(error);
             }

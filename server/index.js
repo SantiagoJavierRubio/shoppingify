@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const session = require('express-session');
 
+
 const userRoutes = require('./routes/users.js');
 const productRoutes = require('./routes/products.js');
 const listRoutes = require('./routes/lists.js');
