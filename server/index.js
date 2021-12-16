@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const session = require('express-session');
 
+
 const userRoutes = require('./routes/users.js');
 const productRoutes = require('./routes/products.js');
 const listRoutes = require('./routes/lists.js');
@@ -17,13 +18,10 @@ app.use(session({
     cookie: { maxAge: 60000 }
 }))
 app.use(express.json());
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-    res.send("Welcome to Shoppingify's backend")
-})
 
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
@@ -34,6 +32,9 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500).json(err.message);
 });
 
+app.get('/', (req, res) => {
+    res.send("Welcome to Shoppingify's backend")
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
