@@ -4,13 +4,15 @@ import itemList from './ducks/itemList';
 import views from './ducks/views';
 import listHistory from './ducks/listHistory';
 import user from './ducks/user';
+import products from './ducks/products';
 import { watcherSaga } from './sagas/rootSaga';
 
 const reducer = combineReducers({
     items: itemList,
     views,
     listHistory,
-    user
+    user,
+    products
 });
 
 

@@ -2,7 +2,6 @@ export const LOG_USER = 'logUser';
 export const SET_USER = 'setUser';
 export const CHECK_USER = 'checkUser';
 export const LOGOUT_USER = 'logOutUser'
-const REG_USER = 'regUser';
 
 export const logUser = (email, password) => ({
     type: LOG_USER,
@@ -21,12 +20,6 @@ export const checkUser = () => ({
 
 export const logOutUser = () => ({
     type: LOGOUT_USER
-})
-
-export const registerUser = (email, password) => ({
-    type: REG_USER,
-    email,
-    password
 })
 
 const initialState = {

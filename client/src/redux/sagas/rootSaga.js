@@ -1,9 +1,10 @@
-import { takeLatest } from 'redux-saga/effects';
-import { handleLogUser, handleCheckUser, handleLogOut } from './handlers/user';
-import { LOG_USER, CHECK_USER, LOGOUT_USER } from '../ducks/user';
+import { all } from 'redux-saga/effects';
+import { userSaga } from './userSaga';
+import { productsSaga } from './productsSaga';
 
-export function* watcherSaga() {
-    yield takeLatest(LOG_USER, handleLogUser)
-    yield takeLatest(CHECK_USER, handleCheckUser)
-    yield takeLatest(LOGOUT_USER, handleLogOut)
+export function* watcherSaga(){
+    yield all([
+        userSaga(),
+        productsSaga()
+    ])
 }

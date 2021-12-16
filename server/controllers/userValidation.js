@@ -1,6 +1,6 @@
 const db = require('../db.js');
 const { v4: uuid } = require('uuid');
-const mailer = require('..//mailer.js')
+const mailer = require('../mailer.js')
 
 
 const createValidationCode = async (userID, email) => {

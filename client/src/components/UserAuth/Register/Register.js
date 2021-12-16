@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from '../../../axiosConfig';
 
 const Register = () => {
     
@@ -10,7 +9,7 @@ const Register = () => {
         if(email === '') return errorHandler({field: 'user', code: 'missing'});
         if(password === '') return errorHandler({field: 'password', code: 'missing'});
         try {
-            await axios.post(`http://localhost:5000/users/create`, { email, password })
+            axios.post('users/create', {email, password});
         } catch (error) {
             errorHandler(error);
         }

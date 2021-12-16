@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects';
-import { requestLogUser, requestCheckUser, requestLogOut } from '../requests/user';
+import { requestLogUser, requestCheckUser, requestLogOut} from '../requests/user';
 import { setUser } from '../../ducks/user';
 
 export function* handleLogUser(action) {
