@@ -15,7 +15,7 @@ export const MAIN_VIEWS = {
 const Main = () => {
     
     const dispatch = useDispatch();
-    const view = useSelector((state) => state.views.view);
+    const view = useSelector((state) => state.views.mainView);
 
     useEffect(()=> {
         dispatch(getProducts());

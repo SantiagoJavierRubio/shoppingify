@@ -1,7 +1,16 @@
+@keyframes addButtonClick {
+    0% {
+        background-color: rgba(193,193,196,.35);
+    }
+    100% {
+        background-color: rgba(193,193,196,0);
+    }
+}
+
 .itemMainButton {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 1.5rem;
     padding: 0rem .8rem;
@@ -24,8 +33,13 @@
     height: 2.2rem;
     width: 2.2rem;
     cursor: pointer;
-    color: rgb(193,193,196)
+    color: rgb(193,193,196);
+    margin-top: .5rem;
+    text-align: center;
+}
+.itemMainButton .itemAddButton:not(:active){
+    animation: addButtonClick ease-out .5s;
 }
 .itemMainButton .itemAddButton:active{
-    background-color: whitesmoke;
+    background-color: rgba(193,193,196,.35);
 }

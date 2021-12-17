@@ -1,0 +1,82 @@
+#product-details {
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    padding: 1.5rem 1.5rem 0rem 2.5rem;
+    overflow-y: scroll;
+}
+#product-details .detailsCloseButton {
+    border: none;
+    background-color: transparent;
+    color: rgb(249,161,9);
+    font-size: .85rem;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+#product-details .detailsCloseButton span {
+    padding-top: .08rem;
+}
+#product-details .productImage {
+    margin-top: 1rem;
+    border-radius: 25px;
+    width: 95%;
+    margin-bottom: 2.5rem;
+}
+#product-details .detailTitle {
+    color: rgb(193,193,196);
+    font-size: .75rem;
+    font-weight: 500;
+    margin-top: 3rem;
+}
+#product-details .productTitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0;
+}
+#product-details .aboutText {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-top: 0;
+}
+#product-details .detailsActions {
+    background: #fff;
+    padding: .5rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+.detailsActions .delete {
+    height: 52%;
+    width: 40%;
+    border: none;
+    box-shadow: none;
+    color: rgb(52,51,58);
+    font-size: 1rem;
+    font-weight: 700;
+}
+.detailsActions .delete:hover {
+    box-shadow: none;
+}
+.detailsActions .delete:active {
+    background-color: rgba(243, 0, 16, 0.335);
+}
+.detailsActions .add {
+    border: none;
+    height: 52%;
+    width: 40%;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.2s ease-in;
+}
+.detailsActions .add:hover {
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.35);
+    transition: none;
+}
+.detailsActions .add:active {
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+}
