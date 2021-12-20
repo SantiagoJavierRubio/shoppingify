@@ -1,6 +1,9 @@
 #main-section{
     margin-right: 24.3rem;
     margin-left: 4rem;
+    padding-left: 3%;
+    max-height: 100%;
+    overflow-y: scroll;
 }
 #main-section h2 {
     margin-left: .5rem;

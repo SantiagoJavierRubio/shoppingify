@@ -18,12 +18,12 @@ const Item = ({ item }) => {
     }
 
     return(
-        <button className='itemMainButton primaryButton' onClick={handleFocusItem}>
+        <div className='itemMainButton primaryButton' onClick={handleFocusItem}>
             <p className='itemName'>{item.name}</p>
             <button onClick={handleAddItemToList} className='itemAddButton'>
                 <span className="material-icons">add</span>
             </button>
-        </button>
+        </div>
     )
 }
 

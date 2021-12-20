@@ -21,9 +21,9 @@ const Items = () => {
         setCategories(byCategories);
     }, [items])
 
-    useEffect(()=> {
-        console.log(itemsByCategories)
-    }, [itemsByCategories])
+    // useEffect(()=> {
+    //     console.log(itemsByCategories)
+    // }, [itemsByCategories])
 
     return(
         <>
@@ -35,11 +35,11 @@ const Items = () => {
         {itemsByCategories.length > 0 &&
         <div id='main-category-list'>
             {itemsByCategories.map(category => {
-                return <div className='category'>
+                return <div className='category' key={category.category}>
                             <h5>{category.category}</h5>
                             <div className="categoryItemList">
                             {category.items.map(item => {
-                                return <Item item={item}/>
+                                return <Item item={item} key={item.ID} />
                             })}
                             </div>
                         </div>

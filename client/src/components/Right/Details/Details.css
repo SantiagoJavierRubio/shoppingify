@@ -20,11 +20,19 @@
 #product-details .detailsCloseButton span {
     padding-top: .08rem;
 }
-#product-details .productImage {
-    margin-top: 1rem;
-    border-radius: 25px;
+#product-details .imageContainer {
     width: 95%;
+    margin-top: 1rem;
     margin-bottom: 2.5rem;
+    min-height: fit-content;
+    height: 15rem;
+    max-height: 50%;
+    display: flex;
+    align-items: center;
+}
+#product-details .productImage {
+    border-radius: 25px;
+    width: 100%;
 }
 #product-details .detailTitle {
     color: rgb(193,193,196);

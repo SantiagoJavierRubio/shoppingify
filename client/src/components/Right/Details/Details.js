@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setRightView } from '../../../redux/ducks/views';
 import { addItem } from '../../../redux/ducks/itemList';
+import { useEffect, useState } from 'react';
+import DeleteModal from './DeleteModal/DeleteModal';
 import './Details.css';
 
 const Details = () => {
@@ -8,29 +10,38 @@ const Details = () => {
     const focus = useSelector((state) => state.views.focus);
     const dispatch = useDispatch();
 
+    // User action functions
     const handleCloseDetails = () => {
         dispatch(setRightView('menu', null))
     }
-
     const handleAddItemToList = (e) => {
         dispatch(addItem(focus))
         dispatch(setRightView('menu', null))
     }
-
+    const [showModal, setShowModal] = useState(false)
     const handleDeleteItem = () => {
-        /*
-            ADD MODAL AND DELETE FROM USERS PRODUCTS LOGIC
-        */
-       console.warn('FUNCTION PENDING')
+        setShowModal(true);
     }
+
+    // Image rendering funcs
+    useEffect(() => {
+        if(!focus.img || focus.img === 'NULL') return handleImgError();
+    }, [focus])
+    const handleImgError = () => {
+        document.querySelector('#details-product-image').src = 'https://res.cloudinary.com/dju7kjewc/image/upload/v1639774934/productDefault_r5p8oa.jpg'
+    }
+
 
     return(
         <article id="product-details">
+            <DeleteModal show={showModal} setShowModal={setShowModal} />
             <button className="detailsCloseButton" onClick={handleCloseDetails}>
                 <span className="material-icons">keyboard_backspace</span>
                 back
             </button>
-            <img className="productImage" src={focus.img} alt={focus.name} />
+            <div className="imageContainer">
+                <img className="productImage" src={focus.img} alt={focus.name} id="details-product-image" onError={handleImgError}/>
+            </div>
             <p className="detailTitle">name</p>
             <p className="productTitle">{focus.name}</p>
             <p className="detailTitle">category</p>

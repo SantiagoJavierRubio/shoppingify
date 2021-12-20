@@ -10,5 +10,5 @@ export function requestCreateProduct(product) {
 }
 
 export function requestDeleteProduct(id) {
-    return axios.post('/products/delete', { id })
+    return axios.post('/products/delete', {id: id})
 }

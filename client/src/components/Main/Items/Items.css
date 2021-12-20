@@ -19,4 +19,5 @@
 #main-category-list h5{
     font-size: 1.15rem;
     font-weight: 500;
+    overflow-wrap: anywhere;
 }

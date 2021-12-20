@@ -17,9 +17,9 @@ export const createProduct = (product) => ({
     product
 })
 
-export const deleteProduct = (id) => ({
+export const deleteProduct = (productID) => ({
     type: DELETE_PRODUCT,
-    id
+    productID
 })
 
 const initialState = []
@@ -27,7 +27,7 @@ const initialState = []
 export default function(state=initialState, action) {
     switch(action.type){
         case SET_PRODUCTS:
-            return [ ...state, ...action.products ]
+            return [ ...action.products ]
         default:
             return state
     }
