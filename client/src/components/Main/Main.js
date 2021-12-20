@@ -1,7 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts } from '../../redux/ducks/products';
+import { useEffect } from 'react';
 import Stats from './Stats/Stats';
 import Items from './Items/Items';
 import History from './History/History';
+import './Main.css';
 
 export const MAIN_VIEWS = {
     ITEMS: 'items',
@@ -10,8 +13,14 @@ export const MAIN_VIEWS = {
 }
 
 const Main = () => {
+    
+    const dispatch = useDispatch();
+    const view = useSelector((state) => state.views.mainView);
 
-    const view = useSelector((state) => state.views.view);
+    useEffect(()=> {
+        dispatch(getProducts());
+    }, [])
+
 
     return(
         <main id="main-section">

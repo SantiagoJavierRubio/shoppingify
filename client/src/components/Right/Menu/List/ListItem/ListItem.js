@@ -37,7 +37,7 @@ const ListItem = ({ item }) => {
     return(
         <div className="listItem" onClick={() => setEditMode(true)} ref={itemRef}>
             <h6 className="itemName">
-                {item.id}
+                {item.name}
             </h6>
             <div className={`listItemInfo ${editMode ? 'itemEdit' : null}`}>
                 {editMode ? 

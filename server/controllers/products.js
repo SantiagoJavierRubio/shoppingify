@@ -34,10 +34,14 @@ const getProducts = async (req, res, next) => {
 
 const deleteProduct = async (req, res, next) => {
     const productID = req.body.id;
-    db.execute('DELETE FROM Products WHERE ID = ?', [productID], (err, result) => {
-        if(err) return next(err);
-        res.status(200).json({ message: 'Item deleted' });
-    })
+    try {
+        db.execute('DELETE FROM Products WHERE ID = ?', [productID], (err, result) => {
+            if(err) return next(err);
+            res.status(200).json({ message: 'Item deleted' });
+        })
+    } catch(err) {
+        return next(err);
+    }
 }
 
 

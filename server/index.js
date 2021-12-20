@@ -15,7 +15,7 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 1000 * 60 * 24, secure: false }
 }))
 app.use(express.json());
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));

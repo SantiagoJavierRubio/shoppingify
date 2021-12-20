@@ -1,6 +1,6 @@
 .right-menu {
     background-color: rgb(255, 240, 222);
-    height: 100%;
-    padding: .5rem 1.5rem 0rem 2.5rem;
+    height: 86%;
+    padding: .5rem 1.2rem 0rem 2rem;
     overflow-y: scroll;
 }

@@ -5,8 +5,10 @@
     align-items: center;
     width: 100%;
     padding: .5rem 0rem;
-    height: 2.8rem;
+    height: 2.5rem;
     margin: .25rem 0rem;
+    flex-wrap: nowrap;
+    height: fit-content;
 }
 
 .listItem .listItemInfo {
@@ -28,6 +30,11 @@
     font-weight: 500;
     color: black;
     cursor: default;
+    flex-grow: 1;
+    overflow-wrap: break-word;
+    flex-wrap: nowrap;
+    max-width: 58%;
+    height: fit-content;
 }
 
 .listItem .itemAmmount {
@@ -62,5 +69,5 @@
 }
 
 .listItem .itemAction.itemDelete {
-    height: 2.8rem;
+    height: 2.5rem;
 }

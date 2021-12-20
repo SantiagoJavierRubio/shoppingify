@@ -11,13 +11,13 @@ export const addItemToCart = (state, item) => {
         if(category.category !== item.category) return category
 
         // if the item is not present already in the category adds it
-        if(!category.items.find(i => i.id === item.id)) {
+        if(!category.items.find(i => i.ID === item.ID)) {
             return { category: category.category, items: [...category.items, {...item, ammount: 1}]}
         }
 
         // add one to the ammount value of the item
         const updatedCategoryList = category.items.map(it => {
-            if(it.id !== item.id) return it
+            if(it.ID !== item.ID) return it
             return { ...it, ammount: it.ammount + 1 }
         })
         return { category: category.category, items: updatedCategoryList}
@@ -30,7 +30,7 @@ export const removeItemFromCart = (state, item) => {
     const newList = state.shoppingList.map(category => {
         if(category.category !== item.category) return category
         if(category.items.length <= 1) return;
-        return { category: category.category, items: category.items.filter(it => it.id !== item.id) }
+        return { category: category.category, items: category.items.filter(it => it.ID !== item.ID) }
     })
     // filter category if empty
     return newList.filter(a => a)
@@ -44,7 +44,7 @@ export const itemAddOrSubstract = (state, item, sum) => {
     return state.shoppingList.map(category => {
         if(category.category !== item.category) return category
         const updatedItems = category.items.map(it => {
-            if(it.id !== item.id) return it
+            if(it.ID !== item.ID) return it
             return { ...it, ammount: it.ammount + sum }
         })
         return { category: category.category, items: updatedItems }

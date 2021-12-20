@@ -1,15 +1,29 @@
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../../redux/ducks/itemList';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import Item from './Item/Item';
+import './Items.css';
 
 const Items = () => {
 
-    const dispatch = useDispatch()
+    const items = useSelector((state) => state.products)
+    const [itemsByCategories, setCategories] = useState([]);
 
-    const handleAddItem = (i) => {
-        if(i === 1) dispatch(addItem({id:'potatoes', category: 'vegetables'}))
-        if(i === 2) dispatch(addItem({id: 'shampoo', category: 'pharmacy'}))
-        if(i === 3) dispatch(addItem({id: 'soap', category: 'pharmacy'}))
-    }
+    useEffect(()=> {
+        if(!items) return
+        const categories = [...new Set(items.map(item => item.category))]
+        const byCategories = []
+        categories.forEach(category => {
+            byCategories.push({
+                category,
+                items: items.filter(item => item.category === category)
+            })
+        })
+        setCategories(byCategories);
+    }, [items])
+
+    // useEffect(()=> {
+    //     console.log(itemsByCategories)
+    // }, [itemsByCategories])
 
     return(
         <>
@@ -18,12 +32,19 @@ const Items = () => {
                 <span>Shoppingify</span> allows you to take your shopping list wherever you go
             </h2>
         </header>
-        <div>
-            <button onClick={() => handleAddItem(1)}>ADD PRUEBA</button>
-            <button onClick={() => handleAddItem(2)}>ADD BOBI</button>
-            <button onClick={() => handleAddItem(3)}>ADD BOBI2</button>
-            {/* Destructure every category with every item each in a button with an add option and show info on click */}
-        </div>
+        {itemsByCategories.length > 0 &&
+        <div id='main-category-list'>
+            {itemsByCategories.map(category => {
+                return <div className='category' key={category.category}>
+                            <h5>{category.category}</h5>
+                            <div className="categoryItemList">
+                            {category.items.map(item => {
+                                return <Item item={item} key={item.ID} />
+                            })}
+                            </div>
+                        </div>
+                })}
+        </div>}
         </>
     )
 }

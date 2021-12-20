@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Menu from './Menu/Menu';
 import AddForm  from './AddForm/AddForm';
 import Details from './Details/Details';
@@ -6,7 +6,7 @@ import './Right.css';
 
 const Right = () => {
 
-    const [view, setView] = useState('menu');
+    const view = useSelector((state) => state.views.rightView);
 
     return(
         <aside id="right-menu">

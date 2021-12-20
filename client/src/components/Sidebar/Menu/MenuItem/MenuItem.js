@@ -1,16 +1,16 @@
 import { MAIN_VIEWS } from "../../../Main/Main";
 import { useDispatch, useSelector } from "react-redux";
-import { setView } from '../../../../redux/ducks/views';
+import { setMainView } from '../../../../redux/ducks/views';
 import './MenuItem.css';
 
 const MenuItem = ({ value }) => {
 
     const dispatch = useDispatch()
 
-    const view = useSelector((state) => state.views.view);
+    const view = useSelector((state) => state.views.mainView);
 
     const handleNavigation = () => {
-        dispatch(setView(value))
+        dispatch(setMainView(value))
     }
 
     return(
