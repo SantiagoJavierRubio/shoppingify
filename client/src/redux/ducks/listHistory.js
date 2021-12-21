@@ -1,22 +1,46 @@
-const ADD_NEW_LIST = 'addNewList'
+export const CREATE_LIST = 'createList'
+export const GET_LISTS = 'getLists'
+export const GET_LIST_DETAIL = 'getListDetail'
+export const DELETE_LIST = 'deleteList'
+const SET_HISTORY = 'setHistory'
+const SET_ACTIVE = 'setActive'
 
-export const addNewList = (name, list) => ({
-    type: ADD_NEW_LIST,
+export const createList = (name, products) => ({
+    type: CREATE_LIST,
     name,
-    list
+    products
+})
+export const getLists = () => ({
+    type: GET_LISTS
+})
+export const getListDetail = (id) => ({
+    type: GET_LIST_DETAIL,
+    id
+})
+export const deleteList = (id) => ({
+    type: DELETE_LIST,
+    id
+})
+export const setHistory = (history) => ({
+    type: SET_HISTORY,
+    history
+})
+export const setActive = (active) => ({
+    type: SET_ACTIVE,
+    active
 })
 
-const initialState = []
+const initialState = {
+    activeList: null,
+    listHistory: []
+}
 
 export default function (state=initialState, action) {
     switch(action.type) {
-        case ADD_NEW_LIST:
-            console.log(action.name, action.list)
-            return [...state, {
-                name: action.name,
-                date: Date.now(),
-                list: action.list
-            }]
+        case SET_HISTORY:
+            return { ...state, listHistory: [...action.history] }
+        case SET_ACTIVE:
+            return { ...state, activeList: action.active }
         default:
             return state
     }

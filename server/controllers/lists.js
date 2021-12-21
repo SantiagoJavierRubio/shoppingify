@@ -51,7 +51,8 @@ const createList = (req, res, next) => {
         ID: null,
         user_id: req.session.userID,
         name: userInput.name,
-        date
+        date,
+        state: 'pending'
     }
     try{
         db.execute(db.format('INSERT INTO Shopping_Lists SET ?', listData), (err, result) => {
@@ -66,6 +67,60 @@ const createList = (req, res, next) => {
         })
     } catch(err) {
         return next(err);
+    }
+}
+
+const setActiveList = (req, res, next) => {
+    const id = req.body.id;
+    try {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = `pending` WHERE state = `active`'), (err, result) => {
+            if(err) throw err
+        })
+        db.execute(db.format('UPDATE Shopping_Lists SET state = `active` WHERE ID = ?', [id]), (err, result) => {
+            if(err) throw err;
+            if(!result[0]){
+                const notFound = new Error('List not found');
+                notFound.status = 404;
+                return next(notFound)
+            }
+            res.status(200).json(result.insertId)
+        })
+    } catch(error) {
+        return next(error)
+    }
+}
+
+const setCompletedList = (req, res, next) => {
+    const id = req.body.id;
+    try {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = `completed` WHERE ID = ?', [id]), (err, result) => {
+            if(err) throw err;
+            if(!result[0]){
+                const notFound = new Error('List not found');
+                notFound.status = 404;
+                return next(notFound)
+            }
+            res.status(200).json(result.insertId)
+        })
+    } catch(error) {
+        return next(error)
+    }
+}
+
+const setCancelledList = (req, res, next) => {
+    const id = req.body.id;
+    try {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = `cancelled` WHERE ID = ?', [id]), (err, result) => {
+            if(err) throw err;
+            if(!result[0]){
+                const notFound = new Error('List not found');
+                notFound.status = 404;
+                return next(notFound)
+            }
+            res.status(200).json(result.insertId)
+        })
+    } catch(error) {
+        return next(error)
     }
 }
 
@@ -94,4 +149,4 @@ const deleteList = (req, res, next) => {
     }
 }
 
-module.exports = { getLists, getListDetail, createList, deleteList }
+module.exports = { getLists, getListDetail, createList, deleteList, setActiveList, setCancelledList, setCompletedList }

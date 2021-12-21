@@ -1,12 +1,16 @@
 const express = require('express');
-const { getLists, getListDetail, createList, deleteList } = require('../controllers/lists.js');
+const { getLists, getListDetail, createList, deleteList, setActiveList, setCancelledList, setCompletedList } = require('../controllers/lists.js');
 const { isAuthorized } = require('../controllers/users.js');
 
 const router = express.Router();
 
-router.get('/', isAuthorized, getLists);
-router.get('/info/:id', isAuthorized, getListDetail)
-router.post('/create', isAuthorized, createList);
-router.post('/delete', isAuthorized, deleteList);
+router.use(isAuthorized);
+router.get('/', getLists);
+router.get('/info/:id', getListDetail);
+router.post('/create', createList);
+router.post('/delete', deleteList);
+router.post('/complete', setCompletedList);
+router.post('/cancel', setCancelledList);
+router.post('/active', setActiveList);
 
 module.exports = router;
