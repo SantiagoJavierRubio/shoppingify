@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addNewList } from '../../../../../redux/ducks/listHistory';
+import { useDispatch, useSelector } from 'react-redux';
+import { createList } from '../../../../../redux/ducks/listHistory';
 import { ReactComponent as EmptyCartLogo } from '../cart.svg';
 import './BottomActions.css';
 
@@ -13,9 +13,12 @@ const BottomActions = ({ enabled, list }) => {
         setInput(e.target.value);
     }
 
-    // REDUX SAGA ALTERNATIVE???
     const handleSubmit = () => {
-        dispatch(addNewList(inputValue, list))
+        if(!inputValue || inputValue==="") return
+        const itemList = list.map(item => {
+            return {id: item.ID, ammount: item.ammount}
+        })
+        dispatch(createList(inputValue, itemList))
     }
 
     return(
