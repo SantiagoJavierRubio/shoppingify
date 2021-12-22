@@ -10,7 +10,7 @@ import { watcherSaga } from './sagas/rootSaga';
 const reducer = combineReducers({
     items: itemList,
     views,
-    listHistory,
+    history: listHistory,
     user,
     products
 });
