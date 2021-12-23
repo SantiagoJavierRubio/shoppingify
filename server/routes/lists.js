@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.use(isAuthorized);
 router.get('/', getLists);
-router.get('/info/:id', getListDetail);
+router.get('/info', getListDetail);
 router.post('/create', createList);
 router.post('/delete', deleteList);
 router.post('/complete', setCompletedList);

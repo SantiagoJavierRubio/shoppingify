@@ -21,16 +21,10 @@
     align-items: center;
     gap: 1rem;
 }
-.historyItemDate {
-    font-size: .75rem;
-    font-weight: 500;
-    color: rgb(193,193,196);
+.historyItemActions .historyDate{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.historyItemDate span {
-    margin-right: .25rem;
 }
 .historyItemState {
     border-radius: 8px;

@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import { requestGetLists, requestGetListDetail, requestCreateList, requestDeleteList } from '../requests/lists';
-import { setHistory, setActive } from '../../ducks/listHistory';
+import { setHistory, setActive, setFocus } from '../../ducks/listHistory';
 
 export function* handleGetLists() {
     try{
@@ -14,9 +14,9 @@ export function* handleGetLists() {
 export function* handleGetListDetail(action) {
     try{
         const response = yield call(requestGetListDetail, action.id)
-        yield put(setActive(response))
+        yield put(setFocus(response))
     } catch(err) {
-        console.log(err)
+        if(err.message === 'No items on this list') yield put(setFocus({error: err.message}))
     }
 }
 

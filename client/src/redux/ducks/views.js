@@ -1,9 +1,10 @@
 const SET_MAIN_VIEW = 'setMainView';
 const SET_RIGHT_VIEW = 'setRightView';
 
-export const setMainView = (mainView) => ({
+export const setMainView = (mainView, historyFocus=null) => ({
     type: SET_MAIN_VIEW,
-    mainView
+    mainView,
+    historyFocus
 })
 
 export const setRightView = (rightView, focus=null) => ({
@@ -11,6 +12,7 @@ export const setRightView = (rightView, focus=null) => ({
     rightView,
     focus
 })
+
 
 const initialState = {
     mainView: 'items',

@@ -21,10 +21,6 @@ const Items = () => {
         setCategories(byCategories);
     }, [items])
 
-    // useEffect(()=> {
-    //     console.log(itemsByCategories)
-    // }, [itemsByCategories])
-
     return(
         <>
         <header>
