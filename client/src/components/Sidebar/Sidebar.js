@@ -15,7 +15,9 @@ const Sidebar = () => {
         <nav id="nav-bar">
             <Logo className="mainLogo" onClick={handleLogOut}/>
             <Menu />
-            <span className="material-icons">shopping_cart</span>
+            <div id="shopping-cart-logo">
+                <span className="material-icons">shopping_cart</span>
+            </div>
         </nav>
     )
 }

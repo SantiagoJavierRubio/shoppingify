@@ -1,0 +1,19 @@
+#main-history {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0rem 1rem 0rem .5rem;
+}
+
+/* CHILDREN SHARED STYLES */
+.historyTitle {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.historyDate {
+    font-size: .75rem;
+    font-weight: 500;
+    color: rgb(193,193,196);
+}
+.historyDate span {
+    margin-right: .25rem;
+}

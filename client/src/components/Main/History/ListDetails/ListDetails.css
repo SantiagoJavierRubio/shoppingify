@@ -1,0 +1,23 @@
+#history-details {
+    height: 100%;
+    padding: 2rem .8rem;
+}
+.historyDetailsBack {
+    border: none;
+    background-color: transparent;
+    color: rgb(249,161,9);
+    font-size: .85rem;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+#history-details h3{
+    margin-bottom: 0.8rem;
+}
+#history-details .historyDate {
+    display: flex;
+    align-items: center;
+}

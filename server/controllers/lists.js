@@ -11,12 +11,20 @@ const getLists = async (req, res, next) => {
     }
 }
 
+const completeProductData = (prods, res) => {
+    return prods.map(product => {
+        let match = res.find(p => p.product_id === product.ID);
+        return {...product, ammount: match.ammount}
+    })
+}
+
 const getListDetail = async (req, res, next) => {
     const requiredList = req.query.id;
     const listData = {
         ID: requiredList,
         name: null,
-        products: []
+        products: [],
+        date: null
     }
     try{
         db.query('SELECT * FROM Shopping_Lists WHERE ID = ?', [requiredList], (err, result) => {
@@ -27,15 +35,21 @@ const getListDetail = async (req, res, next) => {
                 return next(notFound)
             }
             listData.name = result[0].name;
+            listData.date = result[0].date
         })
-        db.query('SELECT product_id FROM Shopping_List_Products WHERE list_id = ?', [requiredList], (err, results) => {
-            if(err) throw err;
+        db.query('SELECT * FROM Shopping_List_Products WHERE list_id = ?', [requiredList], (err, results) => {
+            if(err){
+                let notFound = new Error('No items on this list');
+                notFound.status = 404;
+                return next(notFound)
+            };
             const productIDs = results.map(result => {
                 return result.product_id
             })
-            db.query('SELECT * FROM Products WHERE ID IN (?)', productIDs, (error, products) => {
+            db.execute(db.format('SELECT * FROM Products WHERE ID IN (?)', [productIDs]), (error, products) => {
                 if(error) throw err;
-                listData.products = [...products]
+                const fullProducts = completeProductData(products, results)
+                listData.products = [...fullProducts]
                 res.status(200).json(listData);
             })
         })

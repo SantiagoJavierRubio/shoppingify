@@ -1,13 +1,16 @@
+import { useSelector } from 'react-redux';
+import HistoryList from './HistoryList/HistoryList'
+import ListDetails from './ListDetails/ListDetails';
+import './History.css'
+
 const History = () => {
 
+    const focus = useSelector((state) => state.history.listFocus)
 
     return(
-        <>
-        <h2>Shopping history</h2>
-        <div>
-            {/* Destructure shopping lists by month */}
+        <div id="main-history">
+            {focus ? <ListDetails /> : <HistoryList />}
         </div>
-        </>
     )
 }
 

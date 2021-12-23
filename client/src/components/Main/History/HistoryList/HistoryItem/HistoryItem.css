@@ -1,0 +1,52 @@
+.historyItem {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 2px 12px rgba(0,0,0,0.05);
+    padding: 1rem 0.35rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.historyItem p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.historyItemActions {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+}
+.historyItemActions .historyDate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.historyItemState {
+    border-radius: 8px;
+    text-align: center;
+    font-size: .75rem;
+    font-weight: 500;
+    padding: .5rem;
+}
+.historyItemState.pending {
+    color: rgb(249, 161, 9);
+    border: 1px solid rgb(249, 161, 9);
+}
+.historyItemState.completed {
+    color: rgb(86, 204, 242);
+    border: 1px solid rgb(86, 204, 242);
+}
+.historyItemState.cancelled {
+    color: rgb(235, 87, 87);
+    border: 1px solid rgb(235, 87, 87);
+}
+.historyItemActions .rightArrow {
+    color: rgb(249, 161, 9);
+    font-size: 2rem;
+    font-weight: 500;
+}
