@@ -5,6 +5,8 @@
 #empty-cart-logo {
     margin-top: -100%;
     margin-left: 15%;
+    width: 17rem;
+    max-height: 20vh;
 }
 
 .bottomActions {

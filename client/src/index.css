@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: Quicksand;
+    scrollbar-width: none;
 }
 body {
     background-color:rgba(0, 0, 0, .1);
@@ -13,6 +14,9 @@ ul {
 }
 img {
     user-select: none;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 
 
