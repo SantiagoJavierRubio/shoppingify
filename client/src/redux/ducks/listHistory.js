@@ -41,7 +41,7 @@ const initialState = {
     listHistory: []
 }
 
-export default function (state=initialState, action) {
+export default function listHistory(state=initialState, action) {
     switch(action.type) {
         case SET_HISTORY:
             return { ...state, listHistory: [...action.history] }

@@ -20,7 +20,7 @@ const initialState = {
     focus: null
 }
 
-export default function(state=initialState, action){
+export default function views(state=initialState, action){
     switch(action.type){
         case SET_MAIN_VIEW:
             return { ...state, mainView: action.mainView }

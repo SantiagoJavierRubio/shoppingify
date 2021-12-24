@@ -24,7 +24,7 @@ const initialState = {
     shoppingList: []
 }
 
-export default (state = initialState, action) => {
+export default function itemList(state = initialState, action) {
     let newList
     switch(action.type) {
         case ADD_ITEM:

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createList } from '../../../../../redux/ducks/listHistory';
 import { ReactComponent as EmptyCartLogo } from '../cart.svg';
 import './BottomActions.css';
