@@ -17,16 +17,22 @@ const ListDetails = () => {
     }
 
     if(!list) return <></>
-    if(list.error) return <h1>{list.error.message}</h1>
     return(
         <div id="history-details">
             <button onClick={handleGoBack} className="historyDetailsBack">
                 <span className="material-icons">keyboard_backspace</span>
                 back
             </button>
-            <h3 className="historyTitle">{list.name}</h3>
-            <div className="historyDate"><span className="material-icons">event_note</span>{`${dayNames[date.getDay()]} ${date.getMonth()+1}.${date.getDate()}.${date.getFullYear()}`}</div>
-            <ListItems items={list.products} />
+            {!list.error ? (
+                <>
+                <h3 className="historyTitle">{list.name}</h3>
+                <div className="historyDate"><span className="material-icons">event_note</span>{`${dayNames[date.getDay()]} ${date.getMonth()+1}.${date.getDate()}.${date.getFullYear()}`}</div>
+                <ListItems items={list.products} />
+                </>
+            ) : (
+                <h6 className="historyErrorMessage">{list.error}</h6>
+            )
+            }
         </div>
     )
 } 

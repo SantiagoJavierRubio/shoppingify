@@ -3,6 +3,8 @@ import { addItemToCart, removeItemFromCart, itemAddOrSubstract } from "./itemFun
 const ADD_ITEM = "addItem";
 const REMOVE_ITEM = "removeItem";
 const CHANGE_ITEM_QTY = "changeItemQuantity";
+const SET_ACTIVE_LIST = "setActiveList"
+export const GET_ACTIVE_LIST = "getActiveList"
 
 export const addItem = (item) => ({
     type: ADD_ITEM,
@@ -19,8 +21,17 @@ export const changeItemQuantity = (item, sum) => ({
     item,
     sum
 })
+export const setActiveList = (listData) => ({
+    type: SET_ACTIVE_LIST,
+    products: listData.products,
+    name: listData.name
+})
+export const getActiveList = () => ({
+    type: GET_ACTIVE_LIST
+})
 
 const initialState = {
+    name: null,
     shoppingList: []
 }
 
@@ -39,6 +50,8 @@ export default function itemList(state = initialState, action) {
             newList = itemAddOrSubstract(state, action.item, action.sum)
             return { ...state, shoppingList: newList }
 
+        case SET_ACTIVE_LIST:
+            return { ...state, shoppingList: action.products, name: action.name }
         default:
             return state;
     }

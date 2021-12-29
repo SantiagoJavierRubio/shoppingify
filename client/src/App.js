@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { checkUser } from './redux/ducks/user';
+import { getActiveList } from './redux/ducks/itemList';
 import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main';
 import Right from './components/Right/Right';
@@ -14,6 +15,7 @@ function App() {
 
   useEffect(()=> {
     dispatch(checkUser())
+    dispatch(getActiveList())
   }, []);
   
   if(user) return (

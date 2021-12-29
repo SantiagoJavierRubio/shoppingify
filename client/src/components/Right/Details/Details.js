@@ -46,8 +46,11 @@ const Details = () => {
             <p className="productTitle">{focus.name}</p>
             <p className="detailTitle">category</p>
             <p className="aboutText">{focus.category}</p>
-            <p className="detailTitle">note</p>
-            <p className="aboutText">{focus.about}</p>
+            {focus.about && <>
+                <p className="detailTitle">note</p>
+                <p className="aboutText">{focus.about}</p>
+                </>
+            }
             <div className="rightBottomOptions detailsActions">
                 <button className="primaryButton delete" onClick={handleDeleteItem}>delete</button>
                 <button className="accentButton add" onClick={handleAddItemToList}>Add to list</button>

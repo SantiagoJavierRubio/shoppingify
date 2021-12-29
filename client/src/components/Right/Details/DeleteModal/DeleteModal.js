@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteProduct } from '../../../../redux/ducks/products';
+import { removeItem } from '../../../../redux/ducks/itemList';
 import { setRightView } from '../../../../redux/ducks/views';
 import { useRef, useEffect } from 'react';
 import './DeleteModal.css'
@@ -11,6 +12,7 @@ const DeleteModal = ({ show, setShowModal }) => {
 
     const handleProductDelete = () => {
         dispatch(deleteProduct(focus.ID));
+        dispatch(removeItem(focus))
         dispatch(setRightView('menu'));
         return setShowModal(false);
     }

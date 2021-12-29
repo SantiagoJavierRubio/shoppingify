@@ -40,7 +40,8 @@ const HistoryList = () => {
     return(
         <>
             <h2 className="historyTitle">Shopping history</h2>
-            {orderedLists.map(month => {
+            { !listHistory[0] && <h6 className="historyErrorMessage">No shopping lists in your history</h6>}
+            {listHistory[0] && orderedLists.map(month => {
                 return(
                     <div className="historyMonth" key={month[0].date.toString()}>
                         <p className="monthName">{monthNames[month[0].date.getMonth()] + ' ' + month[0].date.getFullYear()}</p>

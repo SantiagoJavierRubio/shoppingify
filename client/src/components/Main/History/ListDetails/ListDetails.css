@@ -1,5 +1,5 @@
 #history-details {
-    height: 100%;
+    height: inherit;
     padding: 2rem .8rem;
 }
 .historyDetailsBack {

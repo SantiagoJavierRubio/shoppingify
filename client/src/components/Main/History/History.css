@@ -17,3 +17,11 @@
 .historyDate span {
     margin-right: .25rem;
 }
+.historyErrorMessage {
+    margin: 5rem auto;
+    padding: 0;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: rgb(50,50,50)
+}

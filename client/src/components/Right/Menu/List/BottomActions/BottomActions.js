@@ -1,13 +1,18 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createList } from '../../../../../redux/ducks/listHistory';
 import { ReactComponent as EmptyCartLogo } from '../cart.svg';
 import './BottomActions.css';
 
 const BottomActions = ({ enabled, list }) => {
 
+    const listName = useSelector((state) => state.items.name) || '';
     const [inputValue, setInput] = useState(null);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setInput(listName);
+    }, [])
 
     const handleInput = e => {
         setInput(e.target.value);
@@ -25,7 +30,7 @@ const BottomActions = ({ enabled, list }) => {
         <div className="rightBottomOptions" id="edit-item-actions">
                 {!enabled && <EmptyCartLogo id="empty-cart-logo" />}
                 <div className={`bottomActions ${!enabled ? 'disabledActions' : null}`}>
-                    <input type="text" disabled={!enabled} onChange={handleInput}/>
+                    <input type="text" disabled={!enabled} onChange={handleInput} placeholder={listName}/>
                     <button className="accentButton" disabled={!enabled} onClick={handleSubmit}>Save</button>
                 </div>
         </div>

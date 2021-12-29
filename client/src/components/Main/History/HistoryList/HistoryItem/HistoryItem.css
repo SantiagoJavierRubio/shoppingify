@@ -33,10 +33,6 @@
     font-weight: 500;
     padding: .5rem;
 }
-.historyItemState.pending {
-    color: rgb(249, 161, 9);
-    border: 1px solid rgb(249, 161, 9);
-}
 .historyItemState.completed {
     color: rgb(86, 204, 242);
     border: 1px solid rgb(86, 204, 242);
