@@ -8,6 +8,7 @@ import './Details.css';
 const Details = () => {
 
     const focus = useSelector((state) => state.views.focus);
+    const isEditing = useSelector((state) => state.views.editMode);
     const dispatch = useDispatch();
 
     // User action functions
@@ -51,10 +52,12 @@ const Details = () => {
                 <p className="aboutText">{focus.about}</p>
                 </>
             }
-            <div className="rightBottomOptions detailsActions">
-                <button className="primaryButton delete" onClick={handleDeleteItem}>delete</button>
-                <button className="accentButton add" onClick={handleAddItemToList}>Add to list</button>
-            </div>
+            {isEditing &&
+                <div className="rightBottomOptions detailsActions">
+                    <button className="primaryButton delete" onClick={handleDeleteItem}>delete</button>
+                    <button className="accentButton add" onClick={handleAddItemToList}>Add to list</button>
+                </div>
+            }
         </article>
     )
 }

@@ -27,3 +27,7 @@ export function requestGetActiveList() {
     return axios.get('/lists/active')
         .then(res => res.data);
 }
+
+export function requestSetCheckedItem({id, status}) {
+    return axios.post('/lists/check-item', {id: id, status: status})
+}

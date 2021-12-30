@@ -3,19 +3,18 @@ import { addItemToCart, removeItemFromCart, itemAddOrSubstract } from "./itemFun
 const ADD_ITEM = "addItem";
 const REMOVE_ITEM = "removeItem";
 const CHANGE_ITEM_QTY = "changeItemQuantity";
-const SET_ACTIVE_LIST = "setActiveList"
-export const GET_ACTIVE_LIST = "getActiveList"
+const SET_ACTIVE_LIST = "setActiveList";
+export const GET_ACTIVE_LIST = "getActiveList";
+export const SET_CHECKED_ITEM = "setCheckedItem";
 
 export const addItem = (item) => ({
     type: ADD_ITEM,
     item
 })
-
 export const removeItem = (item) => ({
     type: REMOVE_ITEM,
     item
 })
-
 export const changeItemQuantity = (item, sum) => ({
     type: CHANGE_ITEM_QTY,
     item,
@@ -29,6 +28,11 @@ export const setActiveList = (listData) => ({
 export const getActiveList = () => ({
     type: GET_ACTIVE_LIST
 })
+export const setCheckedItem = (id, status) => ({
+    type: SET_CHECKED_ITEM,
+    id,
+    status
+}) 
 
 const initialState = {
     name: null,

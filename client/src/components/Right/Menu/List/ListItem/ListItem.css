@@ -11,7 +11,6 @@
     height: fit-content;
     transition: all .1s ease-in-out;
 }
-
 .listItem .listItemInfo {
     display: flex;
     flex-direction: row;
@@ -20,11 +19,9 @@
     border-radius: 12px;
     transition: all .1s ease-in-out;
 }
-
 .listItemInfo.itemEdit {
     background-color: white;
 }
-
 .listItem .itemName {
     margin: 0;
     padding: 0;
@@ -38,7 +35,9 @@
     max-width: 58%;
     height: fit-content;
 }
-
+.listItem .itemName.checked {
+    text-decoration: line-through;
+}
 .listItem .itemAmmount {
     color: rgb(249, 161, 9);
     border: 2px solid rgb(249, 161, 9);
@@ -56,7 +55,6 @@
 .listItem .itemAmmount.itemEdit {
     cursor: default;
 }
-
 .listItem .itemAction {
     border: none;
     cursor: pointer;
@@ -64,12 +62,17 @@
     padding: 0;
     width: 2.3rem;
 }
-
 .listItem .itemAction.itemQuantity {
     color: rgb(249, 161, 9);
     background: transparent;
 }
-
 .listItem .itemAction.itemDelete {
     height: 2.5rem;
+}
+.checkBox {
+    color: rgb(249, 161, 9);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }

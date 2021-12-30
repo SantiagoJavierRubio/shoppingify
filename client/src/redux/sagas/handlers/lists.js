@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
-import { requestGetLists, requestGetListDetail, requestCreateList, requestDeleteList, requestGetActiveList } from '../requests/lists';
+import { requestGetLists, requestGetListDetail, requestCreateList, requestDeleteList, requestGetActiveList, requestSetCheckedItem } from '../requests/lists';
 import { setHistory, setFocus } from '../../ducks/listHistory';
-import { setActiveList } from '../../ducks/itemList';
+import { getActiveList, setActiveList } from '../../ducks/itemList';
 
 export function* handleGetLists() {
     try{
@@ -55,5 +55,14 @@ export function* handleGetActiveList() {
         }
     } catch(err) {
         console.log(err)
+    }
+}
+
+export function* handleSetCheckedItem(action) {
+    try {
+        yield call(requestSetCheckedItem, { id: action.id, status: action.status ? 1 : 0 })
+        yield handleGetActiveList();
+    } catch(err) {
+        console.log(err);
     }
 }
