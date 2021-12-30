@@ -15,8 +15,11 @@ function App() {
 
   useEffect(()=> {
     dispatch(checkUser())
-    dispatch(getActiveList())
   }, []);
+
+  useEffect(() => {
+    dispatch(getActiveList())
+  }, [user])
   
   if(user) return (
     <div className="App">
