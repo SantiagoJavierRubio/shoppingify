@@ -68,6 +68,7 @@ export default function itemList(state = initialState, action) {
 
         case SET_ACTIVE_LIST:
             return { ...state, shoppingList: action.products, name: action.name }
+            
         case RESET_LIST:
             return initialState;
         default:

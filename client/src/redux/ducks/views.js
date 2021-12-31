@@ -1,6 +1,7 @@
 const SET_MAIN_VIEW = 'setMainView';
 const SET_RIGHT_VIEW = 'setRightView';
 const TOGGLE_EDIT_MODE = 'toggleEditMode';
+const SET_MODAL = 'setModal'
 
 export const setMainView = (mainView, historyFocus=null) => ({
     type: SET_MAIN_VIEW,
@@ -18,12 +19,18 @@ export const toggleEditMode = () => ({
     type: TOGGLE_EDIT_MODE
 })
 
+export const setModal = (show) => ({
+    type: SET_MODAL,
+    show
+})
+
 
 const initialState = {
     mainView: 'items',
     rightView: 'menu',
     focus: null,
-    editMode: true
+    editMode: true,
+    modal: false
 }
 
 export default function views(state=initialState, action){
@@ -34,6 +41,8 @@ export default function views(state=initialState, action){
             return { ...state, rightView: action.rightView, focus: action.focus }
         case TOGGLE_EDIT_MODE:
             return { ...state, editMode: !state.editMode}
+        case SET_MODAL:
+            return { ...state, modal: action.show }
         default: 
             return state
     }

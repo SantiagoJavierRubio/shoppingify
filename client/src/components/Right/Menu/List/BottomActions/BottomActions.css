@@ -44,6 +44,7 @@
 }
 .bottomActions button:disabled {
     background-color: rgb(193, 193, 196);
+    cursor: default;
 }
 #edit-list-actions {
     display: flex;
@@ -65,5 +66,22 @@
 }
 #complete-list-button {
     background-color: rgb(86, 204, 242);
+    color: #fff;
+}
+.disabledSection {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.75);
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.disabledSection p {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
     color: #fff;
 }
