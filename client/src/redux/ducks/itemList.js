@@ -6,6 +6,9 @@ const CHANGE_ITEM_QTY = "changeItemQuantity";
 const SET_ACTIVE_LIST = "setActiveList";
 export const GET_ACTIVE_LIST = "getActiveList";
 export const SET_CHECKED_ITEM = "setCheckedItem";
+export const COMPLETE_LIST = "completeList";
+export const CANCEL_LIST = "cancelList";
+const RESET_LIST = "resetList";
 
 export const addItem = (item) => ({
     type: ADD_ITEM,
@@ -32,7 +35,16 @@ export const setCheckedItem = (id, status) => ({
     type: SET_CHECKED_ITEM,
     id,
     status
-}) 
+})
+export const cancelList = () => ({
+    type: CANCEL_LIST
+})
+export const completeList = () => ({
+    type: COMPLETE_LIST
+})
+export const resetList = () => ({
+    type: RESET_LIST
+})
 
 const initialState = {
     name: null,
@@ -56,6 +68,8 @@ export default function itemList(state = initialState, action) {
 
         case SET_ACTIVE_LIST:
             return { ...state, shoppingList: action.products, name: action.name }
+        case RESET_LIST:
+            return initialState;
         default:
             return state;
     }

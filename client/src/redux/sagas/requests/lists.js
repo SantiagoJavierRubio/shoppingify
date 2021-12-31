@@ -18,16 +18,13 @@ export function requestCreateList(data) {
         console.log(err);
     }
 }
-
-export function requestDeleteList(id) {
-    return axios.post('/lists/delete', {id: id})
-}
-
 export function requestGetActiveList() {
     return axios.get('/lists/active')
         .then(res => res.data);
 }
-
 export function requestSetCheckedItem({id, status}) {
     return axios.post('/lists/check-item', {id: id, status: status})
+}
+export function requestSetCompletedList() {
+    return axios.post('/lists/complete')
 }

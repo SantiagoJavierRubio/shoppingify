@@ -110,16 +110,10 @@ const createList = (req, res, next) => {
 }
 
 const setCompletedList = (req, res, next) => {
-    const id = req.body.id;
     try {
-        db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE ID = ?', ['completed', id]), (err, result) => {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE user_id = ? AND state = ?', ['completed', req.session.userID, 'active']), (err, result) => {
             if(err) throw err;
-            if(!result[0]){
-                const notFound = new Error('List not found');
-                notFound.status = 404;
-                return next(notFound)
-            }
-            res.status(200).json(result.insertId)
+            res.status(200).json({message: 'List completed!'})
         })
     } catch(error) {
         return next(error)
@@ -171,7 +165,7 @@ const setCancelledList = (req, res, next) => {
 const checkItem = (req, res, next) => {
     const params = [req.body.status, req.body.id]
     try {
-        db.execute('UPDATE IGNORE Shopping_List_Products SET `checked` = ? WHERE `product_id` = ?', params, (err, result) => {
+        db.execute('UPDATE Shopping_List_Products SET `checked` = ? WHERE `product_id` = ?', params, (err, result) => {
             if(err) throw err;
             return res.status(200).json(result.insertId)
         })

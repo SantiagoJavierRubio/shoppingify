@@ -49,7 +49,7 @@ const List = () => {
                     <p>No items</p>
                 </div>
             }
-            <BottomActions enabled={items[0] ? true : false} list={items} />
+            <BottomActions />
         </article>
     )
 }
