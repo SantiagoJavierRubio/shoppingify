@@ -6,11 +6,13 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main';
 import Right from './components/Right/Right';
 import UserAuth from './components/UserAuth/UserAuth';
+import CancelModal from './components/CancelModal/CancelModal';
 import './App.css'
 
 function App() {
 
   const user = useSelector((state) => state.user.user);
+  const showModal = useSelector((state) => state.views.modal);
   const dispatch = useDispatch();
 
   useEffect(()=> {
@@ -23,6 +25,7 @@ function App() {
   
   if(user) return (
     <div className="App">
+        {showModal && <CancelModal />}
         <Sidebar />
         <Main />
         <Right />

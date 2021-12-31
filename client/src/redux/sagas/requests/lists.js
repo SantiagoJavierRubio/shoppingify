@@ -28,3 +28,6 @@ export function requestSetCheckedItem({id, status}) {
 export function requestSetCompletedList() {
     return axios.post('/lists/complete')
 }
+export function requestSetCancelledList() {
+    return axios.post('/lists/cancel')
+}

@@ -6,14 +6,14 @@ import { ReactComponent as EmptyCartLogo } from '../cart.svg';
 const BottomEdit = () => {
 
     const list = useSelector((state) => state.items.shoppingList);
+    const listName = useSelector((state) => state.items.name);
     const enabled = list[0] ? true : false;
-    const listName = useSelector((state) => state.items.name) || '';
     const [inputValue, setInput] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
         setInput(listName);
-    }, [])
+    }, [listName])
 
     const handleInput = e => {
         setInput(e.target.value);
@@ -32,7 +32,7 @@ const BottomEdit = () => {
                 {!enabled && <EmptyCartLogo id="empty-cart-logo" />}
                 <div className={`bottomActions ${!enabled ? 'disabledActions' : null}`}>
                     <input type="text" disabled={!enabled} onChange={handleInput} placeholder={listName}/>
-                    <button className="accentButton" disabled={!enabled} onClick={handleSubmit}>Save</button>
+                    <button className="accentButton" disabled={!enabled || !inputValue} onClick={handleSubmit}>Save</button>
                 </div>
         </div>
     )

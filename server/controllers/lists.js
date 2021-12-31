@@ -113,7 +113,10 @@ const setCompletedList = (req, res, next) => {
     try {
         db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE user_id = ? AND state = ?', ['completed', req.session.userID, 'active']), (err, result) => {
             if(err) throw err;
-            res.status(200).json({message: 'List completed!'})
+            if(result.changedRows === 0){
+                return res.status(200).json({ message: 'No list to complete' })
+            }
+            return res.status(200).json({message: 'List completed!'})
         })
     } catch(error) {
         return next(error)
@@ -121,16 +124,13 @@ const setCompletedList = (req, res, next) => {
 }
 
 const setCancelledList = (req, res, next) => {
-    const id = req.body.id;
     try {
-        db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE ID = ?', ['cancelled', id]), (err, result) => {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE user_id = ? AND state = ?', ['cancelled', req.session.userID, 'active']), (err, result) => {
             if(err) throw err;
-            if(!result[0]){
-                const notFound = new Error('List not found');
-                notFound.status = 404;
-                return next(notFound)
+            if(result.changedRows === 0){
+                return res.status(200).json({ message: 'No list to cancel' })
             }
-            res.status(200).json(result.insertId)
+            return res.status(200).json({ message: 'List cancelled!' });
         })
     } catch(error) {
         return next(error)
