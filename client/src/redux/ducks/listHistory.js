@@ -31,7 +31,6 @@ export const setFocus = (focus) => ({
 })
 
 const initialState = {
-    activeList: null,
     listFocus: null,
     listHistory: []
 }

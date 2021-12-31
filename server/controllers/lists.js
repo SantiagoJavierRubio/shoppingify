@@ -27,7 +27,7 @@ const getActiveList = (req, res, next) => {
 const completeProductData = (prods, res) => {
     return prods.map(product => {
         let match = res.find(p => p.product_id === product.ID);
-        return {...product, ammount: match.ammount}
+        return {...product, ammount: match.ammount, checked: match.checked}
     })
 }
 
@@ -110,16 +110,10 @@ const createList = (req, res, next) => {
 }
 
 const setCompletedList = (req, res, next) => {
-    const id = req.body.id;
     try {
-        db.execute(db.format('UPDATE Shopping_Lists SET state = `completed` WHERE ID = ?', [id]), (err, result) => {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE user_id = ? AND state = ?', ['completed', req.session.userID, 'active']), (err, result) => {
             if(err) throw err;
-            if(!result[0]){
-                const notFound = new Error('List not found');
-                notFound.status = 404;
-                return next(notFound)
-            }
-            res.status(200).json(result.insertId)
+            res.status(200).json({message: 'List completed!'})
         })
     } catch(error) {
         return next(error)
@@ -129,7 +123,7 @@ const setCompletedList = (req, res, next) => {
 const setCancelledList = (req, res, next) => {
     const id = req.body.id;
     try {
-        db.execute(db.format('UPDATE Shopping_Lists SET state = `cancelled` WHERE ID = ?', [id]), (err, result) => {
+        db.execute(db.format('UPDATE Shopping_Lists SET state = ? WHERE ID = ?', ['cancelled', id]), (err, result) => {
             if(err) throw err;
             if(!result[0]){
                 const notFound = new Error('List not found');
@@ -143,29 +137,41 @@ const setCancelledList = (req, res, next) => {
     }
 }
 
-const deleteList = (req, res, next) => {
-    const toDelete = req.body.id
+// const deleteList = (req, res, next) => {
+//     const toDelete = req.body.id
+//     try {
+//         db.query('SELECT * FROM Shopping_Lists WHERE ID = ?', [toDelete], (err, results) => {
+//             if(err) throw err
+//             if(!results[0]){
+//                 const notFound = new Error('List not found');
+//                 notFound.status = 404;
+//                 return next(notFound)
+//             }
+//             if(results[0].user_id !== req.session.userID){
+//                 const notAuthorized = new Error("You're not authorized to delete this element");
+//                 notAuthorized.status = 401;
+//                 return next(notAuthorized);
+//             }
+//             db.execute('DELETE FROM Shopping_Lists WHERE ID = ?', [toDelete], (error, result) => {
+//                 if(error) throw error;
+//                 res.status(200).json({ message: 'List deleted' });
+//             })
+//         })
+//     } catch(err) {
+//         return next(err);
+//     }
+// }
+
+const checkItem = (req, res, next) => {
+    const params = [req.body.status, req.body.id]
     try {
-        db.query('SELECT * FROM Shopping_Lists WHERE ID = ?', [toDelete], (err, results) => {
-            if(err) throw err
-            if(!results[0]){
-                const notFound = new Error('List not found');
-                notFound.status = 404;
-                return next(notFound)
-            }
-            if(results[0].user_id !== req.session.userID){
-                const notAuthorized = new Error("You're not authorized to delete this element");
-                notAuthorized.status = 401;
-                return next(notAuthorized);
-            }
-            db.execute('DELETE FROM Shopping_Lists WHERE ID = ?', [toDelete], (error, result) => {
-                if(error) throw error;
-                res.status(200).json({ message: 'List deleted' });
-            })
+        db.execute('UPDATE Shopping_List_Products SET `checked` = ? WHERE `product_id` = ?', params, (err, result) => {
+            if(err) throw err;
+            return res.status(200).json(result.insertId)
         })
     } catch(err) {
         return next(err);
     }
 }
 
-module.exports = { getLists, getListDetail, createList, deleteList, getActiveList, setCancelledList, setCompletedList, deleteActive }
+module.exports = { getLists, getListDetail, createList, getActiveList, setCancelledList, setCompletedList, deleteActive, checkItem }

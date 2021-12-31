@@ -5,21 +5,36 @@ import './Items.css';
 
 const Items = () => {
 
-    const items = useSelector((state) => state.products)
+    const items = useSelector((state) => state.products);
+    const isEditing = useSelector((state) => state.views.editMode);
+    const shoppingList = useSelector((state) => state.items.shoppingList)
     const [itemsByCategories, setCategories] = useState([]);
 
-    useEffect(()=> {
-        if(!items) return
-        const categories = [...new Set(items.map(item => item.category))]
+
+    const filterItems = (IDList) => {
+        return items.filter(item => IDList.includes(item.ID))
+    }
+
+    // create a list by categories
+    const sortItems = (itemList) => {
+        const categories = [...new Set(itemList.map(item => item.category))]
         const byCategories = []
         categories.forEach(category => {
             byCategories.push({
                 category,
-                items: items.filter(item => item.category === category)
+                items: itemList.filter(item => item.category === category)
             })
         })
         setCategories(byCategories);
-    }, [items])
+    }
+
+    // re-render item list on change edit mode or item list :::Pending: filter component
+    useEffect(()=> {
+        if(!items) return
+        let itemList = [...items]
+        if(!isEditing) itemList = filterItems([...shoppingList.map(item => item.ID)]);
+        sortItems(itemList);
+    }, [items, isEditing])
 
     return(
         <>

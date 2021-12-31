@@ -1,7 +1,8 @@
 import { call, put } from 'redux-saga/effects';
-import { requestGetLists, requestGetListDetail, requestCreateList, requestDeleteList, requestGetActiveList } from '../requests/lists';
+import { requestGetLists, requestGetListDetail, requestCreateList,
+    requestGetActiveList, requestSetCheckedItem, requestSetCompletedList } from '../requests/lists';
 import { setHistory, setFocus } from '../../ducks/listHistory';
-import { setActiveList } from '../../ducks/itemList';
+import { setActiveList, resetList } from '../../ducks/itemList';
 
 export function* handleGetLists() {
     try{
@@ -15,7 +16,6 @@ export function* handleGetLists() {
         console.log(err)
     }
 }
-
 export function* handleGetListDetail(action) {
     try{
         const response = yield call(requestGetListDetail, action.id)
@@ -25,7 +25,6 @@ export function* handleGetListDetail(action) {
         if(errMsg === 'No items on this list') yield put(setFocus({error: errMsg}))
     }
 }
-
 export function* handleCreateList(action) {
     try{
         yield call(requestCreateList, {name: action.name, products: action.products})
@@ -34,16 +33,6 @@ export function* handleCreateList(action) {
         console.log(err)
     }
 }
-
-export function* handleDeleteList(action) {
-    try{
-        yield call(requestDeleteList, action.id)
-        yield handleGetLists();
-    } catch(err) {
-        console.log(err)
-    }
-}
-
 export function* handleGetActiveList() {
     try{
         const response = yield call(requestGetActiveList)
@@ -55,5 +44,22 @@ export function* handleGetActiveList() {
         }
     } catch(err) {
         console.log(err)
+    }
+}
+export function* handleSetCheckedItem(action) {
+    try {
+        yield call(requestSetCheckedItem, { id: action.id, status: action.status ? 1 : 0 })
+        yield handleGetActiveList();
+    } catch(err) {
+        console.log(err);
+    }
+}
+export function* handleSetCompletedList() {
+    try {
+        yield call(requestSetCompletedList);
+        yield resetList();
+        yield handleGetActiveList();
+    } catch(err) {
+        console.log(err);
     }
 }

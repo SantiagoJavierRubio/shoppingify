@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import ListItem from './ListItem/ListItem';
+import ListItemEdit from './ListItem/ListItemEdit';
+import ListItemShop from './ListItem/ListItemShop';
 import BottomActions from './BottomActions/BottomActions';
 import './List.css';
 
 const List = () => {
 
     const items = useSelector((state) => state.items.shoppingList);
+    const isEditing = useSelector((state) => state.views.editMode);
     const [itemsByCategories, setCategories] = useState([]);
 
     useEffect(()=> {
@@ -35,7 +37,7 @@ const List = () => {
                             <ul>
                                 {category?.items?.map(item => (
                                     <li key={item?.ID}>
-                                        <ListItem item={item} />
+                                        {isEditing ? <ListItemEdit item={item} /> : <ListItemShop item={item} />} 
                                     </li>
                                 ))}
                             </ul>
@@ -47,7 +49,7 @@ const List = () => {
                     <p>No items</p>
                 </div>
             }
-            <BottomActions enabled={items[0] ? true : false} list={items} />
+            <BottomActions />
         </article>
     )
 }

@@ -3,7 +3,7 @@ import { changeItemQuantity, removeItem } from '../../../../../redux/ducks/itemL
 import { useState, useEffect, useRef } from "react"
 import './ListItem.css'
 
-const ListItem = ({ item }) => {
+const ListItemEdit = ({ item }) => {
 
     const [editMode, setEditMode] = useState(false);
     const dispatch = useDispatch();
@@ -65,4 +65,4 @@ const ListItem = ({ item }) => {
     )
 }
 
-export default ListItem;
+export default ListItemEdit;

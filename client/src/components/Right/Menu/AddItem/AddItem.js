@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setRightView } from '../../../../redux/ducks/views';
 import { ReactComponent as Bottle } from './bottle.svg';
 import './AddItem.css';
@@ -6,11 +6,13 @@ import './AddItem.css';
 const AddItem = () => {
 
     const dispatch = useDispatch();
+    const isEditing = useSelector((state) => state.views.editMode)
 
     const handleAddItem = () => {
         dispatch(setRightView('add'))
     }
 
+    if(!isEditing) return <div className="editModeBuffer"></div>
     return(
         <div className="addItemBox">
             <Bottle id="bottle-logo" />
