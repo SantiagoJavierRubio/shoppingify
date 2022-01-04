@@ -1,14 +1,10 @@
 @keyframes flipButton {
     0% {
-        transform: scaleX(1)
-    }
-    50% {
-        transform: scaleX(0)
+        display: none
     }
     100% {
-        transform: scaleX(1)
+        display: unset
     }
-    
 }
 #nav-bar {
     background-color: white;
@@ -21,6 +17,7 @@
     position: relative;
     padding: 1rem 0rem;
     width: 4rem;
+    overflow-x: visible;
 }
 .toggleEditButton {
     margin: 0;
@@ -42,7 +39,12 @@
 .toggleEditButton.notEditing {
     transform: rotateY(180deg);
 }
+.toggleEditButton.notEditing #edit-tooltip{
+    transform-style: preserve-3d;
+    transform: rotateY(180deg) translateX(100%);
+}
 #edit-list-logo {
+    margin: .2rem 0rem 0rem 0rem;
     transform: rotateY(180deg);
 }
 #shopping-cart-logo {
@@ -54,4 +56,12 @@
 }
 .toggleEditButton.editing #edit-list-logo {
     display: none;
+}
+#edit-tooltip{
+    opacity: 1;
+    transition: opacity .9s ease-in-out;
+}
+.toggleEditButton:active #edit-tooltip{
+    opacity: 0;
+    transition: none;
 }

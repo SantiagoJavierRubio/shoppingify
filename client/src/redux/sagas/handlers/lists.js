@@ -29,6 +29,7 @@ export function* handleCreateList(action) {
     try{
         yield call(requestCreateList, {name: action.name, products: action.products})
         yield handleGetLists();
+        yield handleGetActiveList();
     } catch(err) {
         console.log(err)
     }

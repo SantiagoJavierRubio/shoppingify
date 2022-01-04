@@ -20,7 +20,8 @@ const Sidebar = () => {
         <nav id="nav-bar">
             <Logo className="mainLogo" onClick={handleLogOut}/>
             <Menu />
-            <button onClick={handleToggleEdit} id="toggle-edit-button" className={`toggleEditButton ${isEditing ? 'editing' : 'notEditing'}`}>
+            <button onClick={handleToggleEdit} id="toggle-edit-button" className={`toggleEditButton tooltip top ${isEditing ? 'editing' : 'notEditing'}`}>
+                <span id="edit-tooltip" className='tiptext'>{isEditing ? 'Switch to edit mode' : 'Switch to shop mode'}</span>
                 <div id="shopping-cart-logo">
                     <span className="material-icons">shopping_cart</span>
                 </div>

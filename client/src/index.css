@@ -93,3 +93,14 @@ img {
     right: 100%;
     border-color: transparent #454545 transparent transparent;
 }
+.tooltip.top .tiptext{
+    width: 200%;
+    left: 100%;
+    transform: translateX(-50%);
+    bottom: 110%;
+}
+.tooltip.top .tiptext::after{
+    left: 20%;
+    top: 100%;
+    border-color: #454545 transparent transparent transparent;
+}
