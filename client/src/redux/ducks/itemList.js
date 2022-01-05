@@ -43,7 +43,7 @@ export const completeList = () => ({
     type: COMPLETE_LIST
 })
 export const resetList = () => ({
-    type: RESET_LIST
+    type: RESET_LIST,
 })
 
 const initialState = {
@@ -70,7 +70,7 @@ export default function itemList(state = initialState, action) {
             return { ...state, shoppingList: action.products, name: action.name }
             
         case RESET_LIST:
-            return initialState;
+            return { name: null, shoppingList: [] };
         default:
             return state;
     }

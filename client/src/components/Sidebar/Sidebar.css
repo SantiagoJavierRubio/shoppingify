@@ -59,7 +59,7 @@
 }
 #edit-tooltip{
     opacity: 1;
-    transition: opacity .9s ease-in-out;
+    transition: opacity 1.1s ease-in-out;
 }
 .toggleEditButton:active #edit-tooltip{
     opacity: 0;

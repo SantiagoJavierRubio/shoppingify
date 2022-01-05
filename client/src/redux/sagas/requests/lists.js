@@ -11,12 +11,8 @@ export function requestGetListDetail(id) {
 }
 
 export function requestCreateList(data) {
-    try{
-        axios.post('/lists/delete-active');
-        return axios.post('/lists/create', data)
-    } catch(err){
-        console.log(err);
-    }
+    axios.post('/lists/delete-active');
+    return axios.post('/lists/create', data)
 }
 export function requestGetActiveList() {
     return axios.get('/lists/active')
