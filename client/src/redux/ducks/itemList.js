@@ -1,4 +1,5 @@
-import { addItemToCart, removeItemFromCart, itemAddOrSubstract } from "./itemFunctions";
+import { addItemToCart, removeItemFromCart, 
+    itemAddOrSubstract, itemCheckOrUncheck } from "./itemFunctions";
 
 const ADD_ITEM = "addItem";
 const REMOVE_ITEM = "removeItem";
@@ -57,18 +58,17 @@ export default function itemList(state = initialState, action) {
         case ADD_ITEM:
             newList = addItemToCart(state, action.item);
             return { ...state, shoppingList: newList }
-
         case REMOVE_ITEM:
             newList = removeItemFromCart(state, action.item)
             return { ...state, shoppingList: newList }
-
         case CHANGE_ITEM_QTY:
             newList = itemAddOrSubstract(state, action.item, action.sum)
             return { ...state, shoppingList: newList }
-
+        case SET_CHECKED_ITEM:
+            newList = itemCheckOrUncheck(state, action.id, action.status)
+            return { ...state, shoppingList: newList }
         case SET_ACTIVE_LIST:
             return { ...state, shoppingList: action.products, name: action.name }
-            
         case RESET_LIST:
             return { name: null, shoppingList: [] };
         default:

@@ -65,3 +65,13 @@
     opacity: 0;
     transition: none;
 }
+.mainLogo {
+    height: 3rem;
+}
+#logout-button {
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+}
