@@ -137,31 +137,6 @@ const setCancelledList = (req, res, next) => {
     }
 }
 
-// const deleteList = (req, res, next) => {
-//     const toDelete = req.body.id
-//     try {
-//         db.query('SELECT * FROM Shopping_Lists WHERE ID = ?', [toDelete], (err, results) => {
-//             if(err) throw err
-//             if(!results[0]){
-//                 const notFound = new Error('List not found');
-//                 notFound.status = 404;
-//                 return next(notFound)
-//             }
-//             if(results[0].user_id !== req.session.userID){
-//                 const notAuthorized = new Error("You're not authorized to delete this element");
-//                 notAuthorized.status = 401;
-//                 return next(notAuthorized);
-//             }
-//             db.execute('DELETE FROM Shopping_Lists WHERE ID = ?', [toDelete], (error, result) => {
-//                 if(error) throw error;
-//                 res.status(200).json({ message: 'List deleted' });
-//             })
-//         })
-//     } catch(err) {
-//         return next(err);
-//     }
-// }
-
 const checkItem = (req, res, next) => {
     const params = [req.body.status, req.body.id]
     try {

@@ -18,7 +18,10 @@ const Sidebar = () => {
     }
     return(
         <nav id="nav-bar">
-            <Logo className="mainLogo" onClick={handleLogOut}/>
+            <button id="logout-button" className="tooltip bottom">
+                <span className="tiptext">Logout</span>
+                <Logo className="mainLogo" onClick={handleLogOut}/>
+            </button>
             <Menu />
             <button onClick={handleToggleEdit} id="toggle-edit-button" className={`toggleEditButton tooltip top ${isEditing ? 'editing' : 'notEditing'}`}>
                 <span id="edit-tooltip" className='tiptext'>{isEditing ? 'Switch to edit mode' : 'Switch to shop mode'}</span>

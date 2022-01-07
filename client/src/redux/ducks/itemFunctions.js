@@ -6,12 +6,10 @@ export const addItemToCart = (state, item) => {
         return it
     })
 }
-
 // returns the shopping list without the item and removes the category if it was its last item.
 export const removeItemFromCart = (state, item) => {
     return state.shoppingList.filter(it => item.ID !== it.ID)
 }
-
 // returns the shopping list with the substracted or added item.
 export const itemAddOrSubstract = (state, item, sum) => {
     // if item quantity comes to 0 calls the remove item func to delete its instance.
@@ -20,5 +18,13 @@ export const itemAddOrSubstract = (state, item, sum) => {
     return state.shoppingList.map(it => {
         if(it.ID === item.ID) return {...it, ammount: it.ammount+sum}
         return it
+    })
+}
+// returns the shopping list with the new checked status for the item
+export const itemCheckOrUncheck = (state, id, status) => {
+    return state.shoppingList.map(it => {
+        if(it.ID === id){
+            return { ...it, checked: status }
+        }
     })
 }

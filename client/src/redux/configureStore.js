@@ -1,19 +1,35 @@
+// redux saga imports
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { watcherSaga } from './sagas/rootSaga';
+// redux-persist imports
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+// reducers
 import itemList from './ducks/itemList';
 import views from './ducks/views';
 import listHistory from './ducks/listHistory';
 import user from './ducks/user';
 import products from './ducks/products';
-import { watcherSaga } from './sagas/rootSaga';
+import toasts from './ducks/toasts';
 
-const reducer = combineReducers({
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['items']
+}
+
+const rootReducer = combineReducers({
     items: itemList,
     views,
     history: listHistory,
     user,
-    products
+    products,
+    toasts
 });
+
+const reducer = persistReducer(persistConfig, rootReducer);
+
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -22,4 +38,6 @@ const store = createStore(reducer, {}, composeEnhancers(applyMiddleware(sagaMidd
 
 sagaMiddleware.run(watcherSaga);
 
-export default store;
+const persistor = persistStore(store)
+
+export { store, persistor };
