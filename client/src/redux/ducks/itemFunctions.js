@@ -26,5 +26,6 @@ export const itemCheckOrUncheck = (state, id, status) => {
         if(it.ID === id){
             return { ...it, checked: status }
         }
+        return it
     })
 }

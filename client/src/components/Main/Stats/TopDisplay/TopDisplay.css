@@ -1,0 +1,48 @@
+.topThreeList{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.topThreeList li{
+    margin: 1rem 0 1rem 0;
+    height: 33%;
+}
+.topThreeText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    margin-bottom: 1rem;
+}
+.topThreeText p{
+    margin: 0;
+    padding: 0;
+}
+.topName{
+    font-size: .85rem;
+    font-weight: 500;
+}
+.topPercentage{
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+.percentageBarBack {
+    width: 100%;
+    height: 6px;
+    border-radius: 4px;
+    background-color: rgb(244,244,244);
+}
+.percentageBarFront {
+    height: 6px;
+    border-radius: 4px;
+    transition: all 1s ease-in-out;
+}
+.percentageBarFront.primary {
+    background-color: rgb(249, 161, 9);
+}
+.percentageBarFront.secondary {
+    background-color: rgb(86, 204, 242);
+}

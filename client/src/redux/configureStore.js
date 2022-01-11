@@ -12,6 +12,7 @@ import listHistory from './ducks/listHistory';
 import user from './ducks/user';
 import products from './ducks/products';
 import toasts from './ducks/toasts';
+import stats from './ducks/stats';
 
 const persistConfig = {
     key: 'root',
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     history: listHistory,
     user,
     products,
-    toasts
+    toasts,
+    stats
 });
 
 const reducer = persistReducer(persistConfig, rootReducer);

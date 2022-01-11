@@ -7,6 +7,7 @@ const session = require('express-session');
 const userRoutes = require('./routes/users.js');
 const productRoutes = require('./routes/products.js');
 const listRoutes = require('./routes/lists.js');
+const statsRoutes = require('./routes/stats.js');
 
 const app = express();
 dotenv.config();
@@ -26,6 +27,7 @@ const PORT = process.env.PORT || 5000;
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/lists', listRoutes);
+app.use('/stats', statsRoutes);
 
 // error handler
 app.use(function(err, req, res, next) {
