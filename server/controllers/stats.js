@@ -80,11 +80,12 @@ const getStats = async(req, res, next) => {
             })
             delete month.lists
         })
+        const monthlyItems = listsByMonths.reverse()
         
         const stats = {
             topItems: [ ...topItems ],
             topCategories: [ ...topCategories ],
-            monthlyItems: [ ...listsByMonths ],
+            monthlyItems: [ ...monthlyItems ],
             totalAmmount: total
         }
         console.log(stats)
