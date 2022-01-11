@@ -1,6 +1,11 @@
-
+import { useEffect } from 'react';
+import axios from '../../../axiosConfig';
 
 const Stats = () => {
+
+    useEffect(() => {
+        axios.get('/stats')
+    }, [])
 
     return(
         <>
