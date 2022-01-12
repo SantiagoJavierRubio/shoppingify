@@ -24,7 +24,7 @@ const Graph = ({ monthlyData }) => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="itemQuantity" name='Ammount' stroke="#F9A109" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="itemQuantity" name='Items' stroke="#F9A109" activeDot={{ r: 8 }} />
                 </LineChart>
             </ResponsiveContainer>
       </div>

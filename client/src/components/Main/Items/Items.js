@@ -9,6 +9,7 @@ const Items = () => {
     const isEditing = useSelector((state) => state.views.editMode);
     const shoppingList = useSelector((state) => state.items.shoppingList)
     const [itemsByCategories, setCategories] = useState([]);
+    const [searchFilter, setSearchFilter] = useState('');
 
 
     const filterItems = (IDList) => {
@@ -33,17 +34,32 @@ const Items = () => {
         if(!items) return
         let itemList = [...items]
         if(!isEditing) itemList = filterItems([...shoppingList.map(item => item.ID)]);
-        sortItems(itemList);
-    }, [items, isEditing])
+        let filteredItemList = filterBySearch(itemList)
+        sortItems(filteredItemList);
+    }, [items, isEditing, searchFilter])
+
+    const handleSearchInput = e => {
+        setSearchFilter(e.target.value.toUpperCase())
+    }
+
+    const filterBySearch = (list) => {
+        return list.filter(it => it.name.toUpperCase().includes(searchFilter))
+    }
 
     return(
         <>
-        <header>
+        <header id="items-main-header">
             <h2>
                 <span>Shoppingify</span> allows you to take your shopping list wherever you go
             </h2>
+            <div id="search-bar">
+                <div className="inputBar">
+                    <span className='material-icons'>search</span>
+                    <input type="text" onChange={handleSearchInput} placeholder='search item'/>
+                </div>
+            </div>
         </header>
-        {itemsByCategories.length > 0 &&
+        {itemsByCategories.length > 0 ?
         <div id='main-category-list'>
             {itemsByCategories.map(category => {
                 return <div className='category' key={category.category}>
@@ -55,7 +71,12 @@ const Items = () => {
                             </div>
                         </div>
                 })}
-        </div>}
+        </div>
+        :
+        <div className="noItemsErrorDisplay">
+            <h5>No items found</h5>
+        </div>
+        }
         </>
     )
 }
