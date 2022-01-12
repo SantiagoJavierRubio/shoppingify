@@ -4,11 +4,12 @@
     top: 5%;
     width: 20%;
     max-width: 700px;
-    min-width: 200px;
+    min-width: 300px;
     z-index: 5;
     border: 2px solid;
     border-radius: 12px;
-    transition: right 1.2s;
+    transform-origin: right;
+    transition: all .35s;
 }
 #toast-main[data-error=true]{
     border-color: rgb(255, 91, 91);
@@ -20,12 +21,15 @@
 }
 #toast-main[data-show=true]{
     right: 1rem;
+    transform: scaleX(100%);
 }
 #toast-main[data-show=false]{
-    right: -42%;
+    right: 0rem;
+    transform: scaleX(0%);
 }
 #toast-main:hover {
     right: 1rem;
+    transform: scaleX(100%);
 }
 .closeToast {
     border: none;

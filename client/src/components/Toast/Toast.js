@@ -15,7 +15,7 @@ const Toast = () => {
     useEffect(() => {
         if(toastState.error === null) return
         setShowToast(true)
-        setTimeout(hideToast, 2500)
+        setTimeout(hideToast, 3000)
     }, [toastState])
 
     return(
