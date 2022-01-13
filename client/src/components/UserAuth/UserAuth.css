@@ -1,6 +1,6 @@
 .auth-box {
     margin: auto;
-    width: clamp(250px, 35%, 29rem);
+    width: clamp(350px, 35%, 29rem);
     border: 2px solid rgb(249, 161, 9);
     background-color: white;
     border-radius: 24px;
@@ -96,4 +96,12 @@
     font-weight: 300;
     color: red;
     margin: .2rem 0 0 1rem;
+}
+
+@media only screen and (max-height: 500px) {
+    .auth-box{
+        width: 85%;
+        max-width: 500px;
+        height: 99%;
+    }
 }

@@ -46,3 +46,15 @@
     font-size: 2rem;
     font-weight: 500;
 }
+
+@media only screen and (max-width: 768px) {
+    .historyItem {
+        padding: .75rem 0.15rem .75rem .75rem;
+    }
+    .historyItemActions .rightArrow {
+        font-size: 1.5rem;
+    }
+    .historyItem p {
+        font-size: .85rem;
+    }
+}

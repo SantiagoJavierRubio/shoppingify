@@ -12,6 +12,9 @@ import UserAuth from './components/UserAuth/UserAuth';
 import CancelModal from './components/CancelModal/CancelModal';
 import Toast from './components/Toast/Toast';
 
+// For mobile rendering
+import { isMobile } from 'react-device-detect';
+
 function App() {
 
   const user = useSelector((state) => state.user.user);
@@ -30,7 +33,7 @@ function App() {
     <>
       <Toast />
       {user ? 
-      <div className="App">
+      <div className={`App ${isMobile ? 'mobile' : null}`}>
         {showModal && <CancelModal />}
         <Sidebar />
         <Main />
@@ -40,15 +43,6 @@ function App() {
       <UserAuth />}
     </>
   )
-  if(user) return (
-    <div className="App">
-        {showModal && <CancelModal />}
-        <Sidebar />
-        <Main />
-        <Right />
-    </div>
-  );
-  return <UserAuth />
 }
 
 export default App;
