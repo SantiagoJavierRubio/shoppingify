@@ -88,7 +88,6 @@ const getStats = async(req, res, next) => {
             monthlyItems: [ ...monthlyItems ],
             totalAmmount: total
         }
-        console.log(stats)
         res.status(200).json(stats);
     } catch (err) {
         return next(err)
