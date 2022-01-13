@@ -25,3 +25,16 @@
     font-weight: 500;
     color: rgb(50,50,50)
 }
+
+@media only screen and (max-width: 768px) {
+    #main-history{
+        padding-right: .3rem;
+    }
+    .historyDate {
+        font-size: .6rem;
+    }
+    .historyDate span {
+        font-size: .85rem;
+        margin-right: .05rem;
+    }
+}

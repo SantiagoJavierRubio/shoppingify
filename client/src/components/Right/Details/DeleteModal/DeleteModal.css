@@ -41,3 +41,17 @@
     width: 35%;
     height: 4rem;
 }
+
+@media only screen and (max-width: 768px) {
+    #delete-product-modal {
+        height: 30%;
+    }
+    #delete-product-modal .cancel {
+        font-size: .85rem;
+        height: 4rem;
+    }
+    #delete-product-modal .delete {
+        font-size: .85rem;
+        height: 4rem;
+    }
+}

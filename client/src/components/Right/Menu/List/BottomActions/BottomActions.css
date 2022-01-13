@@ -85,3 +85,12 @@
     font-weight: 700;
     color: #fff;
 }
+
+@media only screen and (max-width: 768px) {
+    #empty-cart-logo {
+        margin-top: -100%;
+        margin-left: 0;
+        width: 17rem;
+        max-height: 20vh;
+    }
+}

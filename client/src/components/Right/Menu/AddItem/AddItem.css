@@ -31,3 +31,18 @@
 .editModeBuffer {
     margin-top: 2rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .addItemBox {
+        max-width: 350px;
+    }
+    .addOptions p {
+        font-size: .85rem;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    #bottle-logo {
+        transform: scale(1.45)
+    }
+}

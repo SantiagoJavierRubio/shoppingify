@@ -8,3 +8,10 @@
 #main-section h2 {
     margin-left: .5rem;
 }
+
+@media only screen and (max-width: 768px) {
+    #main-section{
+        margin-right: 0;
+        scroll-snap-align: end;
+    }
+}
