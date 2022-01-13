@@ -1,13 +1,15 @@
 import { call, put } from 'redux-saga/effects';
 import { requestLogUser, requestCheckUser, requestLogOut} from '../requests/user';
 import { setUser } from '../../ducks/user';
+import { setUndefinedErrorToast } from '../../ducks/toasts';
 
 export function* handleLogUser(action) {
     try {
         const response = yield call(requestLogUser, action);
         yield put(setUser(response))
     } catch(err) {
-        console.log(err)
+        let errMsg = err.response.data.message;
+        yield put(setUndefinedErrorToast(errMsg))
     }
 }
 

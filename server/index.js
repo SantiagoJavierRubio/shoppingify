@@ -12,14 +12,15 @@ const statsRoutes = require('./routes/stats.js');
 const app = express();
 dotenv.config();
 
+app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 24, secure: false }
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 24, secure: true, sameSite: 'none' }
 }))
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: 'https://shoppingify-sjr.netlify.app' }));
 
 const PORT = process.env.PORT || 5000;
 
