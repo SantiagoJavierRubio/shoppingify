@@ -46,3 +46,10 @@
 .itemMainButton .itemAddButton:active{
     background-color: rgba(193,193,196,.35);
 }
+
+@media only screen and (max-width: 768px) {
+    .itemMainButton {
+        flex-grow: 0;
+        gap: .5rem;
+    }
+}

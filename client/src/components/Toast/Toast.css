@@ -22,14 +22,17 @@
 #toast-main[data-show=true]{
     right: 1rem;
     transform: scaleX(100%);
+    opacity: 1;
 }
 #toast-main[data-show=false]{
     right: 0rem;
     transform: scaleX(0%);
+    opacity: 0;
 }
 #toast-main:hover {
     right: 1rem;
     transform: scaleX(100%);
+    opacity: 1;
 }
 .closeToast {
     border: none;
@@ -69,4 +72,37 @@
     font-weight: 700;
     text-align: left;
     user-select: none;
+}
+
+@media only screen and (max-width: 768px) {
+    #toast-main {
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: none;
+        min-width: none;
+        height: 3.5rem;
+        border: none;
+        border-radius: 0;
+        transform-origin: top center;
+        transition: all .15s;
+    }
+    #toast-main[data-show=true]{
+        transform: scale(100%, 100%);
+    }
+    #toast-main[data-show=false]{
+        right: 0rem;
+        transform: scale(100%, 0%);
+    }
+    #toast-main:hover {
+        transform: none;
+    }
+    .closeToast {
+        display: none;
+    }
+    .toastContent {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+    }
 }

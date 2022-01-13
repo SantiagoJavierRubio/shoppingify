@@ -69,3 +69,21 @@
     width: 20%;
     height: 4rem;
 }
+
+@media only screen and (max-width: 768px) {
+    #cancel-modal .modalMain {
+        width: 80%;
+        transform: translate(-40%, -50%);
+    }
+    .modalMain p {
+        font-size: 1rem;
+    }
+    .cancelModalActions .cancel {
+        width: 35%;
+        font-size: .85rem;
+    }
+    .cancelModalActions .delete {
+        width: 35%;
+        font-size: .85rem;
+    }
+}

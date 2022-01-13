@@ -17,6 +17,7 @@ const CancelModal = () => {
             }
         }
         document.addEventListener('mousedown', handleClickOutside);
+        itemRef.current.scrollIntoView();
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         }

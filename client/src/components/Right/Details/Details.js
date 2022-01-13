@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setRightView } from '../../../redux/ducks/views';
 import { addItem } from '../../../redux/ducks/itemList';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import DeleteModal from './DeleteModal/DeleteModal';
 import './Details.css';
 
@@ -10,6 +10,7 @@ const Details = () => {
     const focus = useSelector((state) => state.views.focus);
     const isEditing = useSelector((state) => state.views.editMode);
     const dispatch = useDispatch();
+    const articleRef = useRef(null)
 
     // User action functions
     const handleCloseDetails = () => {
@@ -32,9 +33,14 @@ const Details = () => {
         document.querySelector('#details-product-image').src = 'https://res.cloudinary.com/dju7kjewc/image/upload/v1639774934/productDefault_r5p8oa.jpg'
     }
 
+    // auto-scroll for mobile
+    useEffect(() => {
+        if(focus) articleRef.current.scrollIntoView();
+    }, [focus])
+
 
     return(
-        <article id="product-details">
+        <article id="product-details" ref={articleRef} className={!isEditing ? 'isEditing' : 'notEditing'}>
             <DeleteModal show={showModal} setShowModal={setShowModal} />
             <button className="detailsCloseButton" onClick={handleCloseDetails}>
                 <span className="material-icons">keyboard_backspace</span>

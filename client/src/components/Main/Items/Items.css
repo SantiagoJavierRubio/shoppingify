@@ -55,6 +55,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    overflow-x: hidden;
 }
 .inputBar input {
     margin-left: .2rem;
@@ -62,4 +63,26 @@
     border: none;
     font-size: .85rem;
     font-weight: 500;
+}
+
+@media only screen and (max-width: 1000px) {
+    #items-main-header h2{
+        font-size: 1rem;
+    }
+    #search-bar{
+        max-width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #items-main-header h2{
+        display: none;
+    }
+    #search-bar{
+        max-width: none;
+    }
+    #main-category-list .categoryItemList {
+        gap: .75rem;
+        columns: 2 auto;
+    }
 }
