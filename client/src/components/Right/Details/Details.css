@@ -65,6 +65,9 @@
     align-items: center;
     gap: 10%;
 }
+.detailsActions button {
+    min-height: fit-content;
+}
 .detailsActions .delete {
     height: 52%;
     width: 40%;

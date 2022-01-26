@@ -80,7 +80,6 @@
     #nav-bar {
         position: fixed;
         left: 0;
-        height: 100vh;
         z-index: 4;
     }
 }

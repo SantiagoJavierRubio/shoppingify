@@ -52,4 +52,9 @@
         flex-grow: 0;
         gap: .5rem;
     }
+    .itemMainButton .itemAddButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
