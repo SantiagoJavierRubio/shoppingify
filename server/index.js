@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const session = require('express-session');
+const sessionStore = require('express-session-rsdb')
 
 
 const userRoutes = require('./routes/users.js');
@@ -14,6 +15,7 @@ dotenv.config();
 
 app.set('trust proxy', 1);
 app.use(session({
+    store: new sessionStore(),
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
