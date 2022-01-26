@@ -5,6 +5,11 @@ export function requestLogUser({ email, password }) {
         .then(res => res.data)
 }
 
+export function requestRegisterUser({ email, password }){
+    return axios.post('/users/create', { email, password})
+        .then(res => res.data)
+}
+
 export function requestCheckUser() {
     return axios.get('/users/check').then(res => res.data)
 }

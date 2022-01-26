@@ -7,14 +7,15 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS
-    }
+    },
+    port: process.env.PORT
 })
 
 /* TEST NODEMAILER */
 
-// transporter.verify(function(error, success){
-//     if(error) return console.log(error)
-//     return console.log('Nodemailer ready to mail!')
-// })
+transporter.verify(function(error, success){
+    if(error) return console.log(error)
+    return console.log('Nodemailer ready to mail!')
+})
 
 module.exports = transporter;
