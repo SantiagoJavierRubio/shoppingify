@@ -1,6 +1,8 @@
 const db = require('../db.js');
 const { v4: uuid } = require('uuid');
-const mailer = require('../mailer.js')
+const mailer = require('../mailer.js');
+const dotenv = require('dotenv');
+dotenv.config()
 
 
 const createValidationCode = async (userID, email) => {
@@ -18,7 +20,7 @@ const createValidationCode = async (userID, email) => {
                 subject: 'Welcome to Shoppingify!',
                 html: `
                     <h1>Welcome!</h1>
-                    <h4>To complete your registration please <a href="http://localhost:5000/users/validate/?id=${userID}&token=${token}">confirm your email address</a></h4>
+                    <h4>To complete your registration please <a href="${process.env.BASE_URL}/users/validate/?id=${userID}&token=${token}">confirm your email address</a></h4>
                     <p>Thank you!</p>
                 `
             })
@@ -44,7 +46,7 @@ const validateUser = (req, res, next) => {
                     if(error) throw error;
                     req.session.loggedIn = true;
                     req.session.userID = id;
-                    res.redirect('http://localhost:3000/', 301);
+                    res.redirect('https://shoppingify-sjr.netlify.app/', 301);
                 })
             }
         })

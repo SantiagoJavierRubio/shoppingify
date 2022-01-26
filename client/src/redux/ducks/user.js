@@ -1,10 +1,17 @@
 export const LOG_USER = 'logUser';
+export const REGISTER_USER = 'registerUser'
 export const SET_USER = 'setUser';
 export const CHECK_USER = 'checkUser';
 export const LOGOUT_USER = 'logOutUser'
 
 export const logUser = (email, password) => ({
     type: LOG_USER,
+    email,
+    password
+})
+
+export const registerUser = (email, password) => ({
+    type: REGISTER_USER,
     email,
     password
 })

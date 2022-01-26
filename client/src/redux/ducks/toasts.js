@@ -5,6 +5,7 @@ const SET_COMPLETED_LIST_TOAST = 'setCompletedListToast';
 const SET_CANCELLED_LIST_TOAST = 'setCancelledListToast';
 const SET_UNDEFINED_ERROR_TOAST = 'setUndefinedErrorToast';
 const SET_NO_ITEMS_TOAST = 'setNoItemsToast';
+const USER_REGISTERED_TOAST = 'userRegisteredToast'
 
 export const setSessionErrorToast = () => ({
     type: SET_SESSION_ERROR_TOAST,
@@ -41,6 +42,11 @@ export const setUndefinedErrorToast = (message) => ({
     error: true,
     message
 })
+export const userRegisteredToast = () => ({
+    type: USER_REGISTERED_TOAST,
+    error: false,
+    message: 'Check your email to validate your account!'
+})
 
 
 const initialState = {
@@ -56,6 +62,7 @@ export default function toasts(state=initialState, action) {
         case SET_COMPLETED_LIST_TOAST:
         case SET_CANCELLED_LIST_TOAST:
         case SET_UNDEFINED_ERROR_TOAST:
+        case USER_REGISTERED_TOAST:
             return { ...state, error: action.error, message: action.message }
         default:
             return state
