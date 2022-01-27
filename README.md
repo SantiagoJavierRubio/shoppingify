@@ -10,7 +10,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/bRpA3aSvxCQQN2xsmyxW">
       Solution
     </a>
     <span> | </span>
@@ -40,11 +40,11 @@
 
 
 - Demo available at https://shoppingify-sjr.netlify.app/ , just register with your email, validate it and you're ready to go.
-- This challenge took me a little longer than previous ones (even longer than I expected), partly because I took it that way in order to learn nwe technologies and also because the hollidays and vacation days.
+- This challenge took me a little longer than previous ones (even longer than I expected), partly because I took it that way in order to learn new technologies and also because the hollidays and vacation days.
 - Learned a lot of Redux and redux-saga from scratch.
 - Challenged myself to use a mysql database for this challenge, it was somewhat challenging because I've never used it in an express server.
 - I also implemented (for the first time in express) the mailing system for validations using nodemailer.
-- Finally, I learned some session and session storage handling for the back-end, I hope to use that knowdelege to upgrade my log and register with other services.
+- Finally, I learned some session and session storage handling for the back-end, I hope to use that knowledge to upgrade my log and register with other services.
 
 ### Built With
 
