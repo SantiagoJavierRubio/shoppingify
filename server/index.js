@@ -18,6 +18,7 @@ dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser());
+app.set('trust proxy', 1);
 const sessionStore = new MySQLStore({}, db.promise())
 app.use(session({
     store: sessionStore,
@@ -31,8 +32,7 @@ app.use(session({
         httpOnly: false,
     }
 }))
-app.set('trust proxy', 1);
-app.use(cors({ credentials: true, origin: 'https://shoppingify-sjr.netlify.app' }));
+app.use(cors({ credentials: true, origin: ['https://shoppingify-sjr.netlify.app', 'https://santiagojavierrubio.herokuapp.com'] }));
 
 const PORT = process.env.PORT || 5000;
 
