@@ -24,13 +24,14 @@
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Overview](#overview)
   - [Built With](#built-with)
   - [Deployed using](#deployed-using)
 - [Features](#features)
-- [How to use](#how-to-use)
-- [Contact](#contact)
+- [How To Use](#how-to-use)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 <!-- OVERVIEW -->
 
@@ -40,7 +41,7 @@
 
 
 - Demo available at https://shoppingify-sjr.netlify.app/ , just register with your email, validate it and you're ready to go.
-- This challenge took me a little longer than previous ones (even longer than I expected), partly because I took it that way in order to learn new technologies and also because the hollidays and vacation days.
+- This challenge took me a little longer than previous ones (even longer than I expected), partly because I took it that way in order to learn new technologies and also because of the hollidays and vacation days.
 - Learned a lot of Redux and redux-saga from scratch.
 - Challenged myself to use a mysql database for this challenge, it was somewhat challenging because I've never used it in an express server.
 - I also implemented (for the first time in express) the mailing system for validations using nodemailer.
@@ -64,7 +65,7 @@
 
 ### Deployed using
 
-- [Heroku](https://www.heroku.com)
+- [Render](https://render.com/)
 - [Netlify](https://app.netlify.com/)
 - [Free Mysql Hosting](https://www.freemysqlhosting.net/)
 
@@ -80,7 +81,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://https://github.com/SantiagoJavierRubio/shoppingify
+$ git clone https://github.com/SantiagoJavierRubio/shoppingify
 
 # Install dependencies for both server and client
 $ cd client
@@ -105,9 +106,9 @@ $ npm run start
 - [Anthony Sistilli's videos on Redux and redux-saga](https://www.youtube.com/c/AnthonySistilli)
 - [MDN web-docs](https://developer.mozilla.org)
 - [CSS tooltip article](https://programacion.net/articulo/como_crear_un_tooltip_muy_simple_con_css_1709)
-- [PhpMyAdmin](https://www.phpmyadmin.co/)
 
 ## Contact
 
 - Linkedin [My Linkedin](https://www.linkedin.com/in/santiago-javier-rubio/)
 - GitHub [@SantiagoJavierRubio](https://github.com/SantiagoJavierRubio)
+- Website [My portfolio](https://www.santiagojrubio.com.ar/)
